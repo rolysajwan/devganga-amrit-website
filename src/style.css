@@ -808,6 +808,35 @@ font-size: 11px;
 line-height: 2;
 }
 
+/* Founder portfolio link */
+.founder-intro {
+  margin-top: 38px;
+  padding-top: 27px;
+  border-top: 1px solid #dcd8cb;
+}
+.founder-intro .eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  color: #9d7d48;
+}
+.founder-intro h3 {
+  margin: 0 0 4px;
+  color: #153c30;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(28px, 3.5vw, 40px);
+  line-height: 1.2;
+}
+.founder-intro p {
+  margin: 0 0 18px;
+  color: #77796e;
+  font-size: 12px;
+}
+.founder-button { width: fit-content; text-decoration: none; }
+@media (max-width: 760px) {
+  .founder-intro { margin-top: 30px; padding-top: 22px; }
+}
+
 .site-footer {
 padding: 55px 10% 0;
 background: #f8f6ef;
