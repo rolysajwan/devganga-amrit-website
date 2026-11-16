@@ -266,6 +266,20 @@ function App() {
           of worship through products intended for religious
           and ritual use.
         </p>
+        <div className="founder-intro">
+          <span className="eyebrow">THE PERSON BEHIND THE VISION</span>
+          <h3>Meet Rahul Sajwan</h3>
+          <p>Founder of DevGanga Amrit</p>
+          <a
+            href="https://rolysajwan.github.io/"
+            className="button button-gold founder-button"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Meet Rahul Sajwan, founder of DevGanga Amrit — opens personal portfolio in a new tab"
+          >
+            Meet the Founder <ArrowRight size={16} />
+          </a>
+        </div>
       </section>
 
       {/* DEVPRAyAG ORIGIN */}
