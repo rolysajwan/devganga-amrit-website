@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   ArrowDown,
   ArrowRight,
@@ -7,6 +6,7 @@ import {
   ShieldCheck,
   Sparkles,
   X,
+  MessageCircle,
 } from 'lucide-react'
 
 const BASE = import.meta.env.BASE_URL
