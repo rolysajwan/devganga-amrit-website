@@ -465,16 +465,34 @@ function App() {
         </div>
 
         <div className="footer-bottom">
-          <span>
-            © {new Date().getFullYear()} DEVGANGA AMRIT
-          </span>
+  <span>
+    © {new Date().getFullYear()} DEVGANGA AMRIT
+  </span>
 
-          <span>
-            INSPIRED BY DEVPRAYAG, UTTARAKHAND, INDIA
-          </span>
+  <span>
+    INSPIRED BY DEVPRAYAG, UTTARAKHAND, INDIA
+  </span>
 
-          <a href="#home">BACK TO TOP ↑</a>
-        </div>
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '18px',
+      flexWrap: 'wrap',
+    }}
+  >
+    <a href={`${import.meta.env.BASE_URL}?page=privacy-policy`}>
+      PRIVACY POLICY
+    </a>
+
+    <a href={`${import.meta.env.BASE_URL}?page=terms`}>
+      TERMS & CONDITIONS
+    </a>
+  </div>
+
+  <a href="#home">BACK TO TOP ↑</a>
+</div>
       </footer>
 
       {/* FLOATING WHATSAPP BUTTON */}
