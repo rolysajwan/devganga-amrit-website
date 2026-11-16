@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import {
   ArrowDown,
   ArrowRight,
-  Droplets,
   Menu,
   Mountain,
   ShieldCheck,
