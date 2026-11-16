@@ -13,6 +13,7 @@ import {
 const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'Our Story', href: '#story' },
+  { label: 'About Us', href: '#about' },
   { label: 'Devprayag', href: '#devprayag' },
   { label: 'Our Product', href: '#product' },
   { label: 'Contact', href: '#contact' },
