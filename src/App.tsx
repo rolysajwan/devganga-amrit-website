@@ -22,9 +22,9 @@ const whatsappLink =
   'https://wa.me/919643345474?text=Namaste%2C%20mujhe%20DevGanga%20Amrit%20Ganga%20Jal%20ke%20baare%20mein%20jaankari%20chahiye.'
 
 const imagePaths = {
-  poster: '/images/devganga-amrit-poster.jpg',
-  logo: '/images/logo.png',
-  product: '/images/product-bottle.png',
+  poster: `${import.meta.env.BASE_URL}images/devganga-amrit-poster.jpg`,
+  logo: `${import.meta.env.BASE_URL}images/logo.png`,
+  product: `${import.meta.env.BASE_URL}images/product-bottle.png`,
 }
 
 function App() {
