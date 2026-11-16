@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   ArrowDown,
   ArrowRight,
@@ -9,8 +10,6 @@ import {
   MessageCircle,
 } from 'lucide-react'
 
-const BASE = import.meta.env.BASE_URL
-
 const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'Our Story', href: '#story' },
@@ -19,21 +18,13 @@ const navItems = [
   { label: 'Contact', href: '#contact' },
 ]
 
-function BrandLogo() {
-  return (
-    <span className="brand-symbol">
-      <img
-        src={`${BASE}images/logo.png`}
-        alt="DevGanga Amrit Logo"
-        style={{
-          display: 'block',
-          width: '100%',
-          height: '100%',
-          objectFit: 'contain',
-        }}
-      />
-    </span>
-  )
+const whatsappLink =
+  'https://wa.me/919643345474?text=Namaste%2C%20mujhe%20DevGanga%20Amrit%20Ganga%20Jal%20ke%20baare%20mein%20jaankari%20chahiye.'
+
+const imagePaths = {
+  poster: '/images/devganga-amrit-poster.jpg',
+  logo: '/images/logo.png',
+  product: '/images/product-bottle.png',
 }
 
 function App() {
@@ -57,7 +48,17 @@ function App() {
           className="brand"
           aria-label="DevGanga Amrit home"
         >
-          <BrandLogo />
+          <span className="brand-symbol">
+            <img
+              src={imagePaths.logo}
+              alt="DevGanga Amrit logo"
+              style={{
+                width: '48px',
+                height: '48px',
+                objectFit: 'contain',
+              }}
+            />
+          </span>
 
           <span className="brand-copy">
             <strong>DEVGANGA AMRIT</strong>
@@ -93,6 +94,7 @@ function App() {
 
         <button
           className="menu-toggle"
+          type="button"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
@@ -104,7 +106,14 @@ function App() {
       {/* HERO SECTION */}
 
       <section className="hero" id="home">
-        <div className="hero-image" aria-hidden="true" />
+        <div
+          className="hero-image"
+          aria-hidden="true"
+          style={{
+            backgroundImage: `url("${imagePaths.poster}")`,
+          }}
+        />
+
         <div className="hero-overlay" />
 
         <div className="hero-content">
@@ -167,7 +176,6 @@ function App() {
           <span className="section-index">
             01 / OUR PHILOSOPHY
           </span>
-
           <span className="gold-rule" />
         </div>
 
@@ -187,15 +195,15 @@ function App() {
           <div className="intro-copy">
             <p>
               Some places are more than destinations. They hold
-              memories, traditions and a sense of belonging that
-              travels across generations.
+              memories, traditions and a sense of belonging
+              that travels across generations.
             </p>
 
             <p>
               DevGanga Amrit draws inspiration from Devprayag,
               the revered Himalayan confluence, bringing the
-              spirit of this heritage into your moments of prayer
-              and devotion.
+              spirit of this heritage into your moments of
+              prayer and devotion.
             </p>
 
             <a className="underlined-link" href="#devprayag">
@@ -237,7 +245,14 @@ function App() {
       {/* DEVPRAyAG ORIGIN */}
 
       <section className="origin-section" id="devprayag">
-        <div className="origin-image" />
+        <div
+          className="origin-image"
+          role="img"
+          aria-label="DevGanga Amrit brand poster featuring Devprayag"
+          style={{
+            backgroundImage: `url("${imagePaths.poster}")`,
+          }}
+        />
 
         <div className="origin-content">
           <span className="section-index">
@@ -268,98 +283,19 @@ function App() {
             Explore the collection <ArrowRight size={16} />
           </a>
 
-          <span className="origin-watermark">
-            DEVPRAYAG
-          </span>
+          <span className="origin-watermark">DEVPRAYAG</span>
         </div>
       </section>
 
-      {/* ORIGINAL BRAND POSTER SHOWCASE */}
+      {/* PRODUCT SECTION */}
 
-      <section
-        className="brand-showcase"
-        id="brand-showcase"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
-          alignItems: 'center',
-          gap: 'clamp(28px, 5vw, 70px)',
-          padding: 'clamp(48px, 8vw, 100px) clamp(20px, 7vw, 100px)',
-          background: '#f5f0e5',
-          color: '#173c30',
-        }}
-      >
-        <div
-          className="brand-showcase-content"
-          style={{ maxWidth: '520px' }}
-        >
-          <span className="eyebrow">
-            THE ESSENCE OF DEVPRAyAG
-          </span>
-
-          <h2
-            style={{
-              margin: '24px 0',
-              fontSize: 'clamp(36px, 5vw, 64px)',
-              lineHeight: 1.08,
-            }}
-          >
-            Two rivers.
-            <br />
-            <em style={{ color: '#a17b39' }}>
-              One divine flow.
-            </em>
-          </h2>
-
-          <p style={{ lineHeight: 1.9, marginBottom: '28px' }}>
-            Inspired by the sacred confluence of Alaknanda
-            and Bhagirathi, DevGanga Amrit brings the spiritual
-            heritage of Devprayag closer to your moments of
-            prayer and devotion.
-          </p>
-
-          <a href="#product" className="button button-dark">
-            Discover Our Product <ArrowRight size={16} />
-          </a>
-        </div>
-
-        <div
-          className="brand-showcase-image"
-          style={{
-            width: '100%',
-            overflow: 'hidden',
-            border: '1px solid rgba(161, 123, 57, 0.35)',
-            background: '#fffdf7',
-          }}
-        >
-          <img
-            src={`${BASE}images/devganga-amrit-poster.jpg`}
-            alt="DevGanga Amrit brand poster featuring Devprayag and the product bottle"
-            loading="lazy"
-            style={{
-              display: 'block',
-              width: '100%',
-              height: 'auto',
-              objectFit: 'contain',
-            }}
-          />
-        </div>
-      </section>
-
-      {/* OUR PRODUCT */}
-
-      <section
-        className="product-section section-pad"
-        id="product"
-      >
+      <section className="product-section section-pad" id="product">
         <div className="product-heading">
           <span className="section-index">
             03 / OUR OFFERING
           </span>
 
-          <p className="eyebrow">
-            A MOMENT OF DEVOTION
-          </p>
+          <p className="eyebrow">A MOMENT OF DEVOTION</p>
 
           <h2>
             Tradition, held
@@ -375,52 +311,33 @@ function App() {
         </div>
 
         <div className="product-showcase">
-          {/* ORIGINAL PRODUCT BOTTLE */}
-
-          <div
-            className="product-art product-art-real"
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '20px',
-              padding: '20px',
-              minWidth: 0,
-            }}
-          >
+          <div className="product-art">
             <div className="product-halo" />
+            <div className="product-orbit orbit-one" />
+            <div className="product-orbit orbit-two" />
 
             <img
-              src={`${BASE}images/product-bottle.png`}
-              alt="DevGanga Amrit 250 ml Ganga Jal bottle with green and gold label"
-              className="product-bottle-image"
+              className="real-product-image"
+              src={imagePaths.product}
+              alt="DevGanga Amrit Ganga Jal 250 ml bottle"
               loading="lazy"
               style={{
                 position: 'relative',
-                zIndex: 1,
+                zIndex: 2,
                 display: 'block',
                 width: '100%',
-                maxWidth: '420px',
+                maxWidth: '380px',
                 height: 'auto',
-                maxHeight: '680px',
+                maxHeight: '620px',
                 objectFit: 'contain',
+                margin: '0 auto',
               }}
             />
 
-            <span
-              className="product-art-caption"
-              style={{
-                textAlign: 'center',
-                letterSpacing: '2px',
-                fontSize: '11px',
-              }}
-            >
+            <span className="product-art-caption">
               INSPIRED BY THE SACRED GANGA
             </span>
           </div>
-
-          {/* PRODUCT DETAILS */}
 
           <div className="product-details">
             <p className="eyebrow">
@@ -488,8 +405,8 @@ function App() {
         </h2>
 
         <p>
-          Inspired by Devprayag. Created with reverence for your
-          sacred rituals.
+          Inspired by Devprayag. Created with reverence for
+          your sacred rituals.
         </p>
 
         <a href="#contact" className="button button-gold">
@@ -499,37 +416,98 @@ function App() {
 
       {/* FOOTER */}
 
-  </footer>
+      <footer className="site-footer" id="contact">
+        <div className="footer-main">
+          <a href="#home" className="brand footer-brand">
+            <span className="brand-symbol">
+              <img
+                src={imagePaths.logo}
+                alt="DevGanga Amrit logo"
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  objectFit: 'contain',
+                }}
+              />
+            </span>
 
-  <a
-    href="https://wa.me/919643345474?text=Namaste%2C%20mujhe%20DevGanga%20Amrit%20Ganga%20Jal%20ke%20baare%20mein%20jaankari%20chahiye."
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Enquire about DevGanga Amrit on WhatsApp"
-    style={{
-      position: 'fixed',
-      right: '20px',
-      bottom: '22px',
-      zIndex: 9999,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '10px',
-      padding: '14px 20px',
-      borderRadius: '50px',
-      background: '#16794b',
-      color: '#ffffff',
-      textDecoration: 'none',
-      boxShadow: '0 6px 24px rgba(0, 0, 0, 0.22)',
-      fontSize: '14px',
-      fontWeight: 600,
-    }}
-  >
-    <MessageCircle size={22} />
-    <span>Enquire on WhatsApp</span>
-  </a>
-</main>
-)
+            <span className="brand-copy">
+              <strong>DEVGANGA AMRIT</strong>
+              <small>THE SPIRIT OF DEVPRAYAG</small>
+            </span>
+          </a>
+
+          <p className="footer-story">
+            A spiritual heritage brand inspired by Devprayag,
+            Uttarakhand.
+          </p>
+
+          <div className="footer-contact">
+            <span className="eyebrow">GET IN TOUCH</span>
+
+            <a href="mailto:devgangaamrit@gmail.com">
+              devgangaamrit@gmail.com
+            </a>
+
+            <a href="tel:+919643345474">
+              +91 96433 45474
+            </a>
+
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp Enquiry <ArrowRight size={14} />
+            </a>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <span>
+            © {new Date().getFullYear()} DEVGANGA AMRIT
+          </span>
+
+          <span>
+            INSPIRED BY DEVPRAYAG, UTTARAKHAND, INDIA
+          </span>
+
+          <a href="#home">BACK TO TOP ↑</a>
+        </div>
+      </footer>
+
+      {/* FLOATING WHATSAPP BUTTON */}
+
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Enquire about DevGanga Amrit on WhatsApp"
+        style={{
+          position: 'fixed',
+          right: '20px',
+          bottom: '22px',
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '10px',
+          padding: '14px 20px',
+          borderRadius: '50px',
+          background: '#16794b',
+          color: '#ffffff',
+          textDecoration: 'none',
+          boxShadow: '0 6px 24px rgba(0, 0, 0, 0.22)',
+          fontSize: '14px',
+          fontWeight: 600,
+          letterSpacing: '0.3px',
+        }}
+      >
+        <MessageCircle size={22} />
+        <span>Enquire on WhatsApp</span>
+      </a>
+    </main>
+  )
 }
 
 export default App
