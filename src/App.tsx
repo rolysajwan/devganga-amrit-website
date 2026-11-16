@@ -20,7 +20,7 @@ const navItems = [
 ]
 
 const whatsappLink =
-  'https://wa.me/919643345474?text=Namaste%2C%20mujhe%20DevGanga%20Amrit%20Ganga%20Jal%20ke%20baare%20mein%20jaankari%20chahiye.'
+  'https://wa.me/919643345474?text=Hello%2C%20DEVGANGA%20AMRIT%20Team!%20I%20would%20like%20to%20know%20more%20about%20your%20Ganga%20Jal%20product.'
 
 const imagePaths = {
   poster: `${import.meta.env.BASE_URL}images/devganga-amrit-poster.jpg`,
@@ -243,6 +243,31 @@ function App() {
         </div>
       </section>
 
+      {/* ABOUT US */}
+
+      <section className="about-section section-pad" id="about">
+        <span className="section-index">
+          ABOUT DEVGANGA AMRIT
+        </span>
+
+        <span className="gold-rule" />
+
+        <h2>
+          Rooted in faith.
+          <br />
+          <em>Inspired by Devprayag.</em>
+        </h2>
+
+        <p>
+          DEVGANGA AMRIT is a spiritual heritage brand inspired
+          by the sacred traditions and natural beauty of
+          Devprayag, Uttarakhand. Our purpose is to bring an
+          expression of this heritage into homes and places
+          of worship through products intended for religious
+          and ritual use.
+        </p>
+      </section>
+
       {/* DEVPRAyAG ORIGIN */}
 
       <section className="origin-section" id="devprayag">
@@ -347,186 +372,4 @@ function App() {
 
             <h3>DevGanga Amrit</h3>
 
-            <p className="product-subtitle">
-              Ganga Jal · 250 ml
-            </p>
-
-            <span className="gold-rule" />
-
-            <p className="product-description">
-              Thoughtfully presented for puja, prayer and
-              religious observances. A reminder of the spiritual
-              connection between tradition, place and devotion.
-            </p>
-
-            <div className="product-spec">
-              <span>PRODUCT</span>
-              <span>Ganga Jal</span>
-            </div>
-
-            <div className="product-spec">
-              <span>SIZE</span>
-              <span>250 ml</span>
-            </div>
-
-            <div className="product-spec">
-              <span>INTENDED USE</span>
-              <span>Religious &amp; ritual use only</span>
-            </div>
-
-            <p className="ritual-warning">
-              FOR RELIGIOUS &amp; RITUAL USE ONLY — NOT FOR
-              DRINKING.
-            </p>
-
-            <a href="#contact" className="button button-dark">
-              Enquire About Our Product <ArrowRight size={16} />
-            </a>
-
-            <p className="availability-note">
-              Product availability and pricing to be confirmed.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CLOSING SECTION */}
-
-      <section className="closing-section">
-        <div className="closing-pattern" />
-
-        <span className="eyebrow">
-          A CONNECTION THAT ENDURES
-        </span>
-
-        <h2>
-          Bring tradition
-          <br />
-          <em>closer to home.</em>
-        </h2>
-
-        <p>
-          Inspired by Devprayag. Created with reverence for
-          your sacred rituals.
-        </p>
-
-        <a href="#contact" className="button button-gold">
-          Connect With Us <ArrowRight size={16} />
-        </a>
-      </section>
-
-      {/* FOOTER */}
-
-      <footer className="site-footer" id="contact">
-        <div className="footer-main">
-          <a href="#home" className="brand footer-brand">
-            <span className="brand-symbol">
-              <img
-                src={imagePaths.logo}
-                alt="DevGanga Amrit logo"
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  objectFit: 'contain',
-                }}
-              />
-            </span>
-
-            <span className="brand-copy">
-              <strong>DEVGANGA AMRIT</strong>
-              <small>THE SPIRIT OF DEVPRAYAG</small>
-            </span>
-          </a>
-
-          <p className="footer-story">
-            A spiritual heritage brand inspired by Devprayag,
-            Uttarakhand.
-          </p>
-
-          <div className="footer-contact">
-            <span className="eyebrow">GET IN TOUCH</span>
-
-            <a href="mailto:devgangaamrit@gmail.com">
-              devgangaamrit@gmail.com
-            </a>
-
-            <a href="tel:+919643345474">
-              +91 96433 45474
-            </a>
-
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp Enquiry <ArrowRight size={14} />
-            </a>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-  <span>
-    © {new Date().getFullYear()} DEVGANGA AMRIT
-  </span>
-
-  <span>
-    INSPIRED BY DEVPRAYAG, UTTARAKHAND, INDIA
-  </span>
-
-  <div
-    style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '18px',
-      flexWrap: 'wrap',
-    }}
-  >
-    <a href={`${import.meta.env.BASE_URL}?page=privacy-policy`}>
-      PRIVACY POLICY
-    </a>
-
-    <a href={`${import.meta.env.BASE_URL}?page=terms`}>
-      TERMS & CONDITIONS
-    </a>
-  </div>
-
-  <a href="#home">BACK TO TOP ↑</a>
-</div>
-      </footer>
-
-      {/* FLOATING WHATSAPP BUTTON */}
-
-      <a
-        href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Enquire about DevGanga Amrit on WhatsApp"
-        style={{
-          position: 'fixed',
-          right: '20px',
-          bottom: '22px',
-          zIndex: 9999,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '10px',
-          padding: '14px 20px',
-          borderRadius: '50px',
-          background: '#16794b',
-          color: '#ffffff',
-          textDecoration: 'none',
-          boxShadow: '0 6px 24px rgba(0, 0, 0, 0.22)',
-          fontSize: '14px',
-          fontWeight: 600,
-          letterSpacing: '0.3px',
-        }}
-      >
-        <MessageCircle size={22} />
-        <span>Enquire on WhatsApp</span>
-      </a>
-    </main>
-  )
-}
-
-export default App
+            <p className="product
