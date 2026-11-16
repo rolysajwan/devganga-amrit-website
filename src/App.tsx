@@ -499,55 +499,7 @@ function App() {
 
       {/* FOOTER */}
 
-      <footer className="site-footer" id="contact">
-        <div className="footer-main">
-          <a
-            href="#home"
-            className="brand footer-brand"
-            aria-label="DevGanga Amrit home"
-          >
-            <BrandLogo />
-
-            <span className="brand-copy">
-              <strong>DEVGANGA AMRIT</strong>
-              <small>THE SPIRIT OF DEVPRAYAG</small>
-            </span>
-          </a>
-
-          <p className="footer-story">
-            A spiritual heritage brand inspired by Devprayag,
-            Uttarakhand.
-          </p>
-
-          <div className="footer-contact">
-            <span className="eyebrow">
-              GET IN TOUCH
-            </span>
-
-            <a href="mailto:devgangaamrit@gmail.com">
-              devgangaamrit@gmail.com
-            </a>
-
-            <a href="tel:+919643345474">
-              +91 96433 45474
-            </a>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <span>
-            © {new Date().getFullYear()} DEVGANGA AMRIT
-          </span>
-
-          <span>
-            INSPIRED BY DEVPRAYAG, UTTARAKHAND, INDIA
-          </span>
-
-          <a href="#home">BACK TO TOP ↑</a>
-        </div>
   </footer>
-
-  {/* FLOATING WHATSAPP ENQUIRY BUTTON */}
 
   <a
     href="https://wa.me/919643345474?text=Namaste%2C%20mujhe%20DevGanga%20Amrit%20Ganga%20Jal%20ke%20baare%20mein%20jaankari%20chahiye."
@@ -571,11 +523,13 @@ function App() {
       boxShadow: '0 6px 24px rgba(0, 0, 0, 0.22)',
       fontSize: '14px',
       fontWeight: 600,
-      letterSpacing: '0.3px',
     }}
   >
     <MessageCircle size={22} />
     <span>Enquire on WhatsApp</span>
   </a>
-
 </main>
+)
+}
+
+export default App
