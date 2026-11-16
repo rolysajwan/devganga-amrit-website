@@ -545,9 +545,37 @@ function App() {
 
           <a href="#home">BACK TO TOP ↑</a>
         </div>
-      </footer>
-    </main>
-  )
-}
+  </footer>
 
-export default App
+  {/* FLOATING WHATSAPP ENQUIRY BUTTON */}
+
+  <a
+    href="https://wa.me/919643345474?text=Namaste%2C%20mujhe%20DevGanga%20Amrit%20Ganga%20Jal%20ke%20baare%20mein%20jaankari%20chahiye."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Enquire about DevGanga Amrit on WhatsApp"
+    style={{
+      position: 'fixed',
+      right: '20px',
+      bottom: '22px',
+      zIndex: 9999,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '10px',
+      padding: '14px 20px',
+      borderRadius: '50px',
+      background: '#16794b',
+      color: '#ffffff',
+      textDecoration: 'none',
+      boxShadow: '0 6px 24px rgba(0, 0, 0, 0.22)',
+      fontSize: '14px',
+      fontWeight: 600,
+      letterSpacing: '0.3px',
+    }}
+  >
+    <MessageCircle size={22} />
+    <span>Enquire on WhatsApp</span>
+  </a>
+
+</main>
