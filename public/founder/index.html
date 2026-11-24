@@ -8,7 +8,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Meet the Founder — DEVGANGA AMRIT">
   <meta property="og:description" content="The person and purpose behind DEVGANGA AMRIT.">
-  <meta property="og:image" content="portrait.jpg">
+  <meta property="og:image" content="seated.jpg">
   <title>Meet the Founder — DEVGANGA AMRIT</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,6 +43,31 @@
     .contact{background:radial-gradient(ellipse at 50% 0%,#244a35,#0b2016 70%)}.contact-inner{grid-template-columns:1fr auto}.email{color:#fff;border-color:rgba(231,211,160,.65)}.footer{background:#06140d;border-top:1px solid rgba(255,255,255,.18)}.footer a:hover{color:#e7d3a0}
     @media(max-width:850px){.header.menu-open{background:rgba(12,35,24,.92);border-radius:24px}.header.menu-open .nav{background:rgba(12,35,24,.92);border:1px solid rgba(255,255,255,.25);border-radius:0 0 22px 22px;backdrop-filter:blur(34px) saturate(180%);-webkit-backdrop-filter:blur(34px) saturate(180%)}.header.menu-open .nav a:not(.nav-cta){color:white}.hero-grid>div:first-child{padding:24px;border-radius:26px}.contact-inner{grid-template-columns:1fr}}
 
+  
+/* Founder portrait visibility fix */
+.portrait-stage {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+.portrait-stage .portrait-frame {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: hidden;
+}
+.portrait-stage .portrait-frame img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 1px;
+  object-fit: cover;
+  object-position: center 24%;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
   </style>
 </head>
 <body>
@@ -74,8 +99,8 @@
           </div>
           <p class="hero-note">Founder &amp; project lead · DEVGANGA AMRIT</p>
         </div>
-        <div class="portrait-stage" data-reveal>
-          <div class="portrait-frame"><img src="portrait.jpg" alt="Portrait of Rahul Sajwan" width="1050" height="1400" fetchpriority="high"></div>
+        <div class="portrait-stage">
+          <div class="portrait-frame"><img src="./seated.jpg" alt="Portrait of Rahul Sajwan" width="1050" height="1400" fetchpriority="high"></div>
           <div class="portrait-outline" aria-hidden="true"></div>
           <div class="portrait-label"><strong>Rahul Sajwan</strong><span>Founder · DEVGANGA AMRIT</span></div>
         </div>
