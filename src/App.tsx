@@ -415,11 +415,9 @@ function App() {
               <h3>Meet Rahul Sajwan</h3>
               <p>Founder of DevGanga Amrit</p>
               <a
-                href="https://rolysajwan.github.io/"
+                href={`${base}founder/`}
                 className="button button-gold founder-button"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Meet Rahul Sajwan, founder of DevGanga Amrit — opens personal portfolio in a new tab"
+                aria-label="Meet Rahul Sajwan, founder of DevGanga Amrit"
               >
                 Meet the Founder <ArrowRight size={16} />
               </a>
