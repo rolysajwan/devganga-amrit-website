@@ -2107,3 +2107,20 @@ main.section-pad p {
     scale: 1.05;
   }
 }
+
+
+/* APPLE STYLE TYPOGRAPHY */
+:root {
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+          "SF Pro Text", "Helvetica Neue", sans-serif;
+  --serif: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+           "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+body, button, input, textarea, select {
+  font-family: var(--sans) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sans) !important;
+}
