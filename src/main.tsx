@@ -4,6 +4,8 @@ import App from './App'
 import PrivacyPolicy from './PrivacyPolicy'
 import TermsAndConditions from './TermsAndConditions'
 import './style.css'
+import './liquid-glass.css'
+import './mockup-liquid-glass.css'
 
 const page = new URLSearchParams(window.location.search).get('page')
 

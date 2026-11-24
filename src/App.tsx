@@ -6,7 +6,6 @@ import {
   type CSSProperties,
 } from 'react'
 import {
-  ArrowDown,
   ArrowRight,
   Droplets,
   Flame,
@@ -29,20 +28,19 @@ import {
   useTilt,
 } from './effects'
 
+const base = import.meta.env.BASE_URL
 const navItems = [
   { label: 'Home', href: '#home', id: 'home' },
   { label: 'Our Story', href: '#story', id: 'story' },
-  { label: 'About Us', href: '#about', id: 'about' },
   { label: 'Devprayag', href: '#devprayag', id: 'devprayag' },
-  { label: 'Our Product', href: '#product', id: 'product' },
-  { label: 'Contact', href: '#contact', id: 'contact' },
+  { label: 'The Product', href: '#product', id: 'product' },
+  { label: 'Founder', href: `${base}founder/`, id: '' },
 ]
-const sectionIds = navItems.map((item) => item.id)
+const sectionIds = navItems.filter((item) => item.id).map((item) => item.id)
 
 const whatsappLink =
   'https://wa.me/919643345474?text=Hello%2C%20DEVGANGA%20AMRIT%20Team!%20I%20would%20like%20to%20know%20more%20about%20your%20Ganga%20Jal%20product.'
 
-const base = import.meta.env.BASE_URL
 const img = {
   logo: `${base}images/logo-512.png`,
   product: `${base}images/product-bottle.webp`,
@@ -69,7 +67,7 @@ function BottleImage({ eager = false }: { eager?: boolean }) {
       sizes="(max-width: 900px) 72vw, 420px"
       width={1024}
       height={1535}
-      alt="DevGanga Amrit Sacred Ganga Jal 250 ml bottle on a rock above the Devprayag confluence"
+      alt="DEVGANGA AMRIT 250 ml Ganga Jal bottle concept visual, shown against the Devprayag river landscape"
       loading={eager ? 'eager' : 'lazy'}
       decoding="async"
       {...(eager ? { fetchPriority: 'high' as const } : {})}
@@ -168,12 +166,12 @@ function App() {
           ))}
 
           <a
-            href="#product"
+            href={`${base}founder/`}
             className="nav-cta"
             style={delay(80 + navItems.length * 55)}
             onClick={closeMenu}
           >
-            Discover <ArrowRight size={15} />
+            Meet the Founder <ArrowRight size={15} />
           </a>
         </nav>
 
@@ -214,36 +212,45 @@ function App() {
             <div className="hero-content">
               <div className="eyebrow hero-eyebrow">
                 <span className="eyebrow-line" />
-                FROM THE SACRED CONFLUENCE
+                INSPIRED BY THE SACRED CONFLUENCE
+                <span className="eyebrow-line" />
               </div>
 
               <h1>
                 <span className="line">
-                  <span>Where the</span>
-                </span>
-                <span className="line">
-                  <span>rivers meet,</span>
-                </span>
-                <span className="line">
-                  <span>
-                    <em>faith flows.</em>
-                  </span>
+                  <span>DEVGANGA AMRIT</span>
                 </span>
               </h1>
 
+              <p className="hero-subtitle">A sacred connection to Devprayag</p>
               <p className="hero-description">
-                Inspired by the timeless spiritual heritage of Devprayag,
-                Uttarakhand — where the sacred rivers come together.
+                Inspired by the confluence of the Alaknanda and Bhagirathi,
+                for your puja and sacred rituals.
               </p>
 
               <div className="hero-actions">
-                <a href="#story" className="button button-gold">
-                  Discover Our Story <ArrowRight size={17} />
-                </a>
-                <a href="#devprayag" className="text-link">
-                  Explore our roots <ArrowDown size={15} />
+                <a href="#devprayag" className="button button-gold">
+                  Explore the Origin <ArrowRight size={17} />
                 </a>
               </div>
+            </div>
+
+            <div className="hero-feature-glass" aria-label="Brand highlights">
+              <article className="hero-glass-tile">
+                <span className="hero-tile-icon"><Droplets size={26} strokeWidth={1.35} /></span>
+                <strong>From Devprayag</strong>
+                <small>At the meeting of two sacred rivers</small>
+              </article>
+              <article className="hero-glass-tile">
+                <span className="hero-tile-icon"><Flower2 size={27} strokeWidth={1.35} /></span>
+                <strong>For Puja</strong>
+                <small>For your sacred rituals and worship</small>
+              </article>
+              <article className="hero-glass-tile">
+                <span className="hero-tile-icon"><Mountain size={27} strokeWidth={1.35} /></span>
+                <strong>Himalayan Heritage</strong>
+                <small>Rooted in the spiritual landscape of Uttarakhand</small>
+              </article>
             </div>
 
             <div className="hero-stage">
@@ -272,8 +279,8 @@ function App() {
                     <strong>250 ml</strong>
                   </div>
                   <div className="chip chip-b" aria-hidden="true">
-                    <small>ORIGIN</small>
-                    <strong>Devprayag</strong>
+                    <small>STATUS</small>
+                    <strong>Concept visual</strong>
                   </div>
                 </div>
               </div>
@@ -539,7 +546,7 @@ function App() {
               </a>
 
               <p className="availability-note">
-                Product availability and pricing to be confirmed.
+                Visual concept only. Product availability and pricing are not confirmed.
               </p>
             </div>
           </div>

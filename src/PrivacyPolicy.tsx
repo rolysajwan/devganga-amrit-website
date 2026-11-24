@@ -1,11 +1,13 @@
 import { ArrowLeft } from 'lucide-react'
 
+const base = import.meta.env.BASE_URL
+
 function PrivacyPolicy() {
 return (
 <main className="section-pad">
 <div style={{ maxWidth: '850px', margin: '0 auto' }}>
 <a
-href="/devganga-amrit-website/"
+href={base}
 className="underlined-link"
 >
 <ArrowLeft size={16} /> Back to Home
