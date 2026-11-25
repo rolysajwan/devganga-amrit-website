@@ -46,9 +46,6 @@ export function useScrollEffects(onScrolled: (scrolled: boolean) => void) {
     const els = Array.from(
       document.querySelectorAll<HTMLElement>('[data-parallax]'),
     )
-    const orbs = Array.from(
-      document.querySelectorAll<HTMLElement>('[data-scroll-orb]'),
-    )
     const progress = document.querySelector<HTMLElement>('.scroll-progress')
     const still = reducedMotion()
     let raf = 0
@@ -66,25 +63,8 @@ export function useScrollEffects(onScrolled: (scrolled: boolean) => void) {
       const pageProgress =
         maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0
       progress?.style.setProperty('--scroll-progress', pageProgress.toFixed(4))
+      window.DevgangaLiquidGlass?.update(pageProgress)
       if (still) return
-
-      for (const orb of orbs) {
-        const driftX = Number(orb.dataset.driftX ?? 0)
-        const driftY = Number(orb.dataset.driftY ?? 0)
-        const driftRotation = Number(orb.dataset.driftRotation ?? 0)
-        orb.style.setProperty(
-          '--orb-scroll-x',
-          `${(window.innerWidth * driftX * pageProgress).toFixed(2)}px`,
-        )
-        orb.style.setProperty(
-          '--orb-scroll-y',
-          `${(window.innerHeight * driftY * pageProgress).toFixed(2)}px`,
-        )
-        orb.style.setProperty(
-          '--orb-scroll-rotation',
-          `${(driftRotation * pageProgress).toFixed(2)}deg`,
-        )
-      }
 
       const vh = window.innerHeight
       for (const el of els) {
@@ -109,6 +89,36 @@ export function useScrollEffects(onScrolled: (scrolled: boolean) => void) {
       if (raf) cancelAnimationFrame(raf)
     }
   }, [onScrolled])
+}
+
+/** Scrolls the shared liquid scene on standalone policy pages. */
+export function useLiquidGlassScroll(enabled: boolean) {
+  useEffect(() => {
+    if (!enabled) return
+
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight
+      const progress =
+        maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0
+      window.DevgangaLiquidGlass?.update(progress)
+    }
+    const request = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+
+    window.addEventListener('scroll', request, { passive: true })
+    window.addEventListener('resize', request)
+    update()
+
+    return () => {
+      window.removeEventListener('scroll', request)
+      window.removeEventListener('resize', request)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [enabled])
 }
 
 /** Shares one pointer listener and animation frame across glass and primary buttons. */

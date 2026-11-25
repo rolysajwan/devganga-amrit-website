@@ -78,72 +78,6 @@ const highlights = [
 
 const delay = (ms: number) => ({ '--d': `${ms}ms` }) as CSSProperties
 
-const glassOrbs = [
-  {
-    id: 'foreground-left',
-    left: '-10%',
-    top: '18%',
-    size: 'clamp(240px, 30vw, 410px)',
-    x: 0.28,
-    y: 0.5,
-    rotation: 28,
-  },
-  {
-    id: 'background-right',
-    left: '72%',
-    top: '7%',
-    size: 'clamp(170px, 22vw, 300px)',
-    x: -0.3,
-    y: 0.58,
-    rotation: -42,
-  },
-  {
-    id: 'center',
-    left: '34%',
-    top: '54%',
-    size: 'clamp(130px, 17vw, 230px)',
-    x: 0.34,
-    y: -0.55,
-    rotation: 36,
-  },
-  {
-    id: 'right',
-    left: '84%',
-    top: '59%',
-    size: 'clamp(100px, 13vw, 180px)',
-    x: -0.48,
-    y: -0.42,
-    rotation: 58,
-  },
-  {
-    id: 'small-upper',
-    left: '54%',
-    top: '17%',
-    size: 'clamp(74px, 9vw, 126px)',
-    x: -0.2,
-    y: 0.76,
-    rotation: -64,
-  },
-  {
-    id: 'left',
-    left: '10%',
-    top: '72%',
-    size: 'clamp(120px, 16vw, 220px)',
-    x: 0.58,
-    y: -0.4,
-    rotation: -28,
-  },
-  {
-    id: 'small-lower',
-    left: '48%',
-    top: '88%',
-    size: 'clamp(58px, 7vw, 100px)',
-    x: -0.24,
-    y: -0.52,
-    rotation: 72,
-  },
-]
-
 function Brand({ footer = false }: { footer?: boolean }) {
   return (
     <a
@@ -260,25 +194,6 @@ function App() {
       </header>
 
       <main id="main">
-        <div className="glass-orb-field" aria-hidden="true">
-          {glassOrbs.map((orb) => (
-            <span
-              key={orb.id}
-              className="glass-orb"
-              data-scroll-orb=""
-              data-drift-x={orb.x}
-              data-drift-y={orb.y}
-              data-drift-rotation={orb.rotation}
-              style={{
-                left: orb.left,
-                top: orb.top,
-                width: orb.size,
-                height: orb.size,
-              }}
-            />
-          ))}
-        </div>
-
         {/* HERO */}
 
         <section className="hero" id="home" ref={heroRef} data-parallax>
