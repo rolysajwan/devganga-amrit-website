@@ -51,18 +51,18 @@
   /* Liquid Glass material */
   --glass-fill: linear-gradient(
     140deg,
-    rgba(255, 255, 255, 0.7) 0%,
-    var(--glass-surface) 52%,
-    rgba(255, 255, 255, 0.62) 100%
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.1) 52%,
+    rgba(255, 255, 255, 0.14) 100%
   );
-  --glass-blur: blur(22px) saturate(180%);
-  --button-glass-blur: blur(14px) saturate(155%);
-  --button-glass-border: rgba(255, 255, 255, 0.76);
-  --button-glass-highlight: rgba(255, 255, 255, 0.82);
+  --glass-blur: blur(24px) saturate(170%);
+  --button-glass-blur: blur(18px) saturate(165%);
+  --button-glass-border: rgba(255, 255, 255, 0.58);
+  --button-glass-highlight: rgba(255, 255, 255, 0.78);
   --glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.95) inset,
     0 -1px 0 rgba(83, 106, 128, 0.06) inset,
-    2px 3px 10px rgba(255, 255, 255, 0.45) inset,
-    -3px -4px 12px rgba(145, 177, 207, 0.14) inset,
+    2px 3px 10px rgba(255, 255, 255, 0.24) inset,
+    -3px -4px 12px rgba(145, 177, 207, 0.1) inset,
     0 0 0 1px rgba(71, 127, 181, 0.12), 0 2px 6px rgba(71, 127, 181, 0.06),
     0 28px 60px -30px rgba(41, 75, 109, 0.2);
 
@@ -295,10 +295,10 @@ p {
     ),
     radial-gradient(
       120% 90% at 0% 0%,
-      rgba(255, 255, 255, 0.55),
+      rgba(255, 255, 255, 0.28),
       transparent 55%
     );
-  opacity: 0.8;
+  opacity: 0.68;
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -351,10 +351,10 @@ p {
 .btn-primary {
   background: linear-gradient(
     140deg,
-    rgba(46, 91, 134, 0.94),
-    rgba(30, 67, 103, 0.88)
+    rgba(223, 240, 251, 0.17),
+    rgba(178, 215, 239, 0.09)
   );
-  color: var(--white);
+  color: var(--ink);
   -webkit-backdrop-filter: var(--button-glass-blur);
   backdrop-filter: var(--button-glass-blur);
   box-shadow: inset 0 1px 0 var(--button-glass-highlight),
@@ -367,8 +367,8 @@ p {
   transform: translateY(-1px);
   background: linear-gradient(
     140deg,
-    rgba(56, 102, 147, 0.95),
-    rgba(31, 72, 111, 0.91)
+    rgba(229, 244, 253, 0.24),
+    rgba(188, 221, 241, 0.14)
   );
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.94),
     inset 0 -1px 0 rgba(23, 50, 77, 0.1),
@@ -385,9 +385,9 @@ p {
   color: var(--ink);
   background: linear-gradient(
     140deg,
-    rgba(255, 255, 255, 0.62),
-    rgba(255, 255, 255, 0.34) 58%,
-    rgba(226, 239, 250, 0.42)
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.08) 58%,
+    rgba(226, 239, 250, 0.12)
   );
   -webkit-backdrop-filter: var(--button-glass-blur);
   backdrop-filter: var(--button-glass-blur);
@@ -401,9 +401,9 @@ p {
   transform: translateY(-1px);
   background: linear-gradient(
     140deg,
-    rgba(255, 255, 255, 0.72),
-    rgba(255, 255, 255, 0.44) 58%,
-    rgba(226, 239, 250, 0.52)
+    rgba(255, 255, 255, 0.23),
+    rgba(255, 255, 255, 0.12) 58%,
+    rgba(226, 239, 250, 0.18)
   );
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96),
     inset 0 -1px 0 rgba(23, 50, 77, 0.05),
@@ -560,8 +560,8 @@ p {
   border-radius: var(--r-pill);
   background: linear-gradient(
     140deg,
-    rgba(246, 202, 145, 0.82),
-    rgba(225, 163, 91, 0.7)
+    rgba(255, 211, 165, 0.17),
+    rgba(232, 150, 78, 0.09)
   );
   color: var(--ink);
   font-size: 0.875rem;
@@ -580,8 +580,8 @@ p {
   transform: translateY(-1px);
   background: linear-gradient(
     140deg,
-    rgba(250, 211, 160, 0.88),
-    rgba(232, 174, 105, 0.76)
+    rgba(255, 220, 181, 0.24),
+    rgba(239, 168, 105, 0.14)
   );
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96),
     inset 0 -1px 0 rgba(23, 50, 77, 0.06),
@@ -596,7 +596,7 @@ p {
   height: 44px;
   border: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.14);
   color: var(--ink);
   -webkit-backdrop-filter: var(--button-glass-blur);
   backdrop-filter: var(--button-glass-blur);
@@ -609,7 +609,7 @@ p {
 
 .menu-toggle:hover {
   transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .menu-toggle:active,
@@ -1330,9 +1330,9 @@ p {
   color: var(--ink);
   background: linear-gradient(
     140deg,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.42) 58%,
-    rgba(226, 239, 250, 0.5)
+    rgba(255, 255, 255, 0.17),
+    rgba(255, 255, 255, 0.09) 58%,
+    rgba(226, 239, 250, 0.13)
   );
   font-size: 0.875rem;
   font-weight: 500;
@@ -1350,9 +1350,9 @@ p {
   transform: translateY(-1px);
   background: linear-gradient(
     140deg,
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0.52) 58%,
-    rgba(226, 239, 250, 0.6)
+    rgba(255, 255, 255, 0.23),
+    rgba(255, 255, 255, 0.13) 58%,
+    rgba(226, 239, 250, 0.19)
   );
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96),
     inset 0 -1px 0 rgba(23, 50, 77, 0.05),
@@ -1546,12 +1546,10 @@ main:not(#main) p {
     gap: 2px;
     padding: 12px;
     border-radius: 28px;
-    /* near-opaque: a blur nested inside the header's blur cannot see the
-       page behind it, so translucency here would only ghost the content */
     background: linear-gradient(
       140deg,
-      rgba(255, 255, 255, 0.98),
-      rgba(234, 244, 255, 0.97)
+      rgba(255, 255, 255, 0.28),
+      rgba(234, 244, 255, 0.2)
     );
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     backdrop-filter: blur(24px) saturate(180%);

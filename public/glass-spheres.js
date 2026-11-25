@@ -4,6 +4,18 @@ const sphereLayers = {
   near: { speed: 0.29 },
 }
 
+const warmSphereColors = [
+  '#f3c08f',
+  '#f7d8b8',
+  '#f2b77f',
+  '#ffd1a1',
+  '#efb77f',
+  '#f8dabb',
+  '#edaa70',
+  '#f4c18e',
+  '#ffe0bc',
+]
+
 const sphereDesigns = [
   {
     layer: 'far',
@@ -164,7 +176,14 @@ const artFor = (id) => `
 function renderScene(scene, width, height, maxScroll, mobile) {
   const activeDesigns = sphereDesigns.filter((sphere) => !mobile || sphere.mobile !== false)
   const defs = activeDesigns
-    .map((sphere, index) => defsFor(`sphere-${index}`, sphere.color))
+    .map((sphere, index) =>
+      defsFor(
+        `sphere-${index}`,
+        scene.dataset.glassTheme === 'warm'
+          ? warmSphereColors[index]
+          : sphere.color,
+      ),
+    )
     .join('')
   const spacing = height * 2.6
   const items = []
