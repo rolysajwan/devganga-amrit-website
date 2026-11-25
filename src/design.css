@@ -1795,3 +1795,41 @@ main:not(#main) p {
     will-change: auto !important;
   }
 }
+
+/* ==========================================
+   DEVGANGA AMRIT — GENTLE FLOATING TEST
+   Subtle, premium, low-amplitude movement
+   ========================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage-img,
+  .origin-img,
+  .product-frame {
+    animation: dg-gentle-float 7s ease-in-out infinite;
+  }
+
+  .origin-img {
+    animation-delay: -2s;
+  }
+
+  .product-frame {
+    animation-delay: -3.5s;
+  }
+
+  @keyframes dg-gentle-float {
+    0%, 100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -6px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-img,
+  .origin-img,
+  .product-frame {
+    animation: none !important;
+  }
+}
