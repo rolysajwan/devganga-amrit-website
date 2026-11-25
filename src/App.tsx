@@ -8,9 +8,11 @@ import {
 import {
   ArrowRight,
   Droplets,
+  Facebook,
   Flame,
   Flower2,
   Hand,
+  Instagram,
   Landmark,
   Menu,
   MessageCircle,
@@ -597,6 +599,28 @@ function App() {
                 WhatsApp Enquiry <ArrowRight size={14} />
               </a>
             </div>
+
+            <nav className="footer-col footer-social" aria-label="Social media">
+              <span className="eyebrow">Follow us</span>
+              <a
+                href="https://www.instagram.com/devgangaamrit/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow DEVGANGA AMRIT on Instagram (@devgangaamrit)"
+              >
+                <Instagram size={18} strokeWidth={1.7} aria-hidden="true" />
+                <span>@devgangaamrit</span>
+              </a>
+              <a
+                href="https://www.facebook.com/devgangaamrit/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow DEVGANGA AMRIT on Facebook (@devgangaamrit)"
+              >
+                <Facebook size={18} strokeWidth={1.7} aria-hidden="true" />
+                <span>@devgangaamrit</span>
+              </a>
+            </nav>
           </div>
 
           <div className="footer-bottom">
