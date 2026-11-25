@@ -2,7 +2,7 @@
 /// <reference types="vite/client" />
 
 interface Window {
-  DevgangaLiquidGlass?: {
-    update: (progress: number) => void
+  DevgangaGlassSpheres?: {
+    mount: (scene: HTMLElement) => () => void
   }
 }

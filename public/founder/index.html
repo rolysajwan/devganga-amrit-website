@@ -10,7 +10,8 @@
   <meta property="og:description" content="The person and purpose behind DEVGANGA AMRIT.">
   <meta property="og:image" content="https://rolysajwan.github.io/devganga-amrit-website/founder/seated.jpg">
   <title>Meet the Founder — DEVGANGA AMRIT</title>
-  <link rel="stylesheet" href="../liquid-glass.css">
+  <link rel="stylesheet" href="../glass-spheres.css">
+  <script defer src="../glass-spheres.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -95,6 +96,8 @@
   </style>
 </head>
 <body>
+  <div class="glass-sphere-scene" data-glass-spheres="auto" aria-hidden="true"></div>
+  <div class="site-content">
   <a class="skip" href="#main">Skip to content</a>
   <header class="header" id="header">
     <a class="brand" href="../" aria-label="Back to DEVGANGA AMRIT homepage">
@@ -111,37 +114,6 @@
   </header>
 
   <main id="main">
-    <div class="liquid-glass-scene" aria-hidden="true">
-      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" focusable="false">
-        <defs>
-          <linearGradient id="liquid-material" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#c5d9e8" stop-opacity=".24"></stop>
-            <stop offset="22%" stop-color="#ffffff" stop-opacity=".46"></stop>
-            <stop offset="51%" stop-color="#deebf5" stop-opacity=".2"></stop>
-            <stop offset="78%" stop-color="#ffffff" stop-opacity=".42"></stop>
-            <stop offset="100%" stop-color="#a8c1d5" stop-opacity=".3"></stop>
-          </linearGradient>
-          <linearGradient id="liquid-reflection" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0"></stop>
-            <stop offset="42%" stop-color="#ffffff" stop-opacity=".18"></stop>
-            <stop offset="52%" stop-color="#ffffff" stop-opacity=".96"></stop>
-            <stop offset="63%" stop-color="#e8f5ff" stop-opacity=".32"></stop>
-            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
-          </linearGradient>
-          <linearGradient id="liquid-rim" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#91b1ca" stop-opacity=".45"></stop>
-            <stop offset="32%" stop-color="#ffffff" stop-opacity=".92"></stop>
-            <stop offset="62%" stop-color="#b6cee0" stop-opacity=".64"></stop>
-            <stop offset="100%" stop-color="#ffffff" stop-opacity=".9"></stop>
-          </linearGradient>
-        </defs>
-        <g class="liquid-glass-form">
-          <path class="liquid-glass-body" data-liquid-body="" d="M 490 36 C 630 132 690 230 568 334 C 445 438 336 514 452 650 C 572 790 646 876 518 964 C 390 1050 260 924 356 790 C 444 666 566 590 468 450 C 368 310 300 202 418 112 Z" fill="url(#liquid-material)"></path>
-          <path class="liquid-glass-rim" data-liquid-body="" d="M 490 36 C 630 132 690 230 568 334 C 445 438 336 514 452 650 C 572 790 646 876 518 964 C 390 1050 260 924 356 790 C 444 666 566 590 468 450 C 368 310 300 202 418 112 Z" fill="none" stroke="url(#liquid-rim)"></path>
-          <path class="liquid-glass-highlight" data-liquid-highlight="" d="M 500 95 C 570 220 450 330 440 450 C 430 590 560 690 520 850" fill="none" stroke="url(#liquid-reflection)"></path>
-        </g>
-      </svg>
-    </div>
     <section class="hero" id="top">
       <div class="wrap hero-grid">
         <div data-reveal>
@@ -226,6 +198,7 @@
   </main>
 
   <footer class="footer"><div class="wrap footer-inner"><a class="footer-brand" href="../">DEVGANGA AMRIT</a><span>Founder: Rahul Sajwan</span><a href="mailto:rolysajwan@gmail.com">rolysajwan@gmail.com</a><span>© <span id="year">2026</span> DEVGANGA AMRIT</span></div></footer>
+  </div>
   <script>
     (() => {
       const header = document.getElementById('header');
@@ -241,9 +214,6 @@
         scrollRaf = requestAnimationFrame(() => {
           scrollRaf = 0;
           header.classList.toggle('is-scrolled', window.scrollY > 24);
-          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-          const progress = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
-          window.DevgangaLiquidGlass?.update(progress);
         });
       };
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -256,6 +226,5 @@
       } else { document.querySelectorAll('[data-reveal]').forEach(element => element.classList.add('visible')); }
     })();
   </script>
-  <script defer src="../liquid-glass.js"></script>
 </body>
 </html>
