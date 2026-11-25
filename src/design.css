@@ -1731,3 +1731,67 @@ main:not(#main) p {
     transition: none !important;
   }
 }
+
+/* ==========================================
+   DEVGANGA AMRIT — CINEMATIC IMAGE DEPTH
+   ========================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Give existing image frames a subtle sense of depth */
+  .stage-img,
+  .origin-img,
+  .product-frame,
+  .hero-media,
+  .hero-image {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  /* Scroll-linked cinematic movement */
+  @supports (animation-timeline: view()) {
+    .stage-img img,
+    .origin-img img,
+    .product-frame img,
+    .hero-media img,
+    .hero-image img {
+      animation: dg-cinematic-image-depth linear both;
+      animation-timeline: view(block);
+      animation-range: entry 0% exit 100%;
+      will-change: scale, translate;
+    }
+
+    @keyframes dg-cinematic-image-depth {
+      from {
+        scale: 1.055;
+        translate: 0 14px;
+      }
+
+      to {
+        scale: 1;
+        translate: 0 -10px;
+      }
+    }
+  }
+
+  /* Refined image edges */
+  .stage-img img,
+  .origin-img img,
+  .product-frame img,
+  .hero-media img,
+  .hero-image img {
+    backface-visibility: hidden;
+  }
+}
+
+/* Accessibility: disable decorative motion when requested */
+@media (prefers-reduced-motion: reduce) {
+  .stage-img img,
+  .origin-img img,
+  .product-frame img,
+  .hero-media img,
+  .hero-image img {
+    animation: none !important;
+    will-change: auto !important;
+  }
+}
