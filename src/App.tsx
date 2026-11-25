@@ -21,6 +21,7 @@ import {
 } from 'lucide-react'
 import {
   useActiveSection,
+  usePointerInteractions,
   usePointerParallax,
   useReveal,
   useScrollEffects,
@@ -111,6 +112,7 @@ function App() {
 
   useReveal()
   useScrollEffects(onScrolled)
+  usePointerInteractions()
   useActiveSection(sectionIds, setActive)
   usePointerParallax(heroRef)
   usePointerParallax(productRef)
@@ -134,6 +136,10 @@ function App() {
 
   return (
     <>
+      <div className="scroll-progress" aria-hidden="true">
+        <span />
+      </div>
+
       <a className="skip-link" href="#main">
         Skip to content
       </a>
