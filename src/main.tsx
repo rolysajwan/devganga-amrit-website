@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import PrivacyPolicy from './PrivacyPolicy'
 import TermsAndConditions from './TermsAndConditions'
-import './style.css'
-import './liquid-glass.css'
-import './mockup-liquid-glass.css'
+import './design.css'
 
 const page = new URLSearchParams(window.location.search).get('page')
 

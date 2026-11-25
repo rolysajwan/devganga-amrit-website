@@ -19,13 +19,11 @@ import {
   Sparkles,
   X,
 } from 'lucide-react'
-import GoldDust from './GoldDust'
 import {
   useActiveSection,
   usePointerParallax,
   useReveal,
   useScrollEffects,
-  useTilt,
 } from './effects'
 
 const base = import.meta.env.BASE_URL
@@ -42,10 +40,12 @@ const whatsappLink =
   'https://wa.me/919643345474?text=Hello%2C%20DEVGANGA%20AMRIT%20Team!%20I%20would%20like%20to%20know%20more%20about%20your%20Ganga%20Jal%20product.'
 
 const img = {
-  logo: `${base}images/logo-512.png`,
+  logo128: `${base}images/logo-128.png`,
+  logo512: `${base}images/logo-512.png`,
   product: `${base}images/product-bottle.webp`,
   product768: `${base}images/product-bottle-768.webp`,
   aerial: `${base}images/devprayag-aerial.webp`,
+  founder: `${base}images/founder-thumb.webp`,
 }
 
 const occasions = [
@@ -57,23 +57,25 @@ const occasions = [
   { label: 'Festivals', Icon: Sparkles },
 ]
 
-const delay = (ms: number) => ({ '--d': `${ms}ms` }) as CSSProperties
+const highlights = [
+  {
+    Icon: Droplets,
+    title: 'From Devprayag',
+    text: 'At the meeting of two sacred rivers',
+  },
+  {
+    Icon: Flower2,
+    title: 'For Puja',
+    text: 'For your sacred rituals and worship',
+  },
+  {
+    Icon: Mountain,
+    title: 'Himalayan Heritage',
+    text: 'Rooted in the spiritual landscape of Uttarakhand',
+  },
+]
 
-function BottleImage({ eager = false }: { eager?: boolean }) {
-  return (
-    <img
-      src={img.product768}
-      srcSet={`${img.product768} 768w, ${img.product} 1024w`}
-      sizes="(max-width: 900px) 72vw, 420px"
-      width={1024}
-      height={1535}
-      alt="DEVGANGA AMRIT 250 ml Ganga Jal bottle concept visual, shown against the Devprayag river landscape"
-      loading={eager ? 'eager' : 'lazy'}
-      decoding="async"
-      {...(eager ? { fetchPriority: 'high' as const } : {})}
-    />
-  )
-}
+const delay = (ms: number) => ({ '--d': `${ms}ms` }) as CSSProperties
 
 function Brand({ footer = false }: { footer?: boolean }) {
   return (
@@ -84,10 +86,9 @@ function Brand({ footer = false }: { footer?: boolean }) {
     >
       <span className="brand-symbol">
         <img
-          className="brand-logo-image"
-          src={img.logo}
-          width={512}
-          height={512}
+          src={footer ? img.logo512 : img.logo128}
+          width={footer ? 512 : 128}
+          height={footer ? 512 : 128}
           alt="DevGanga Amrit logo"
         />
       </span>
@@ -104,14 +105,15 @@ function App() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('home')
   const heroRef = useRef<HTMLElement>(null)
+  const productRef = useRef<HTMLElement>(null)
 
   const onScrolled = useCallback((value: boolean) => setScrolled(value), [])
 
   useReveal()
-  useTilt()
   useScrollEffects(onScrolled)
   useActiveSection(sectionIds, setActive)
   usePointerParallax(heroRef)
+  usePointerParallax(productRef)
 
   // Lock page scroll and support Escape while the mobile menu is open.
   useEffect(() => {
@@ -132,7 +134,7 @@ function App() {
 
   return (
     <>
-      <a className="skip-link" href="#story">
+      <a className="skip-link" href="#main">
         Skip to content
       </a>
 
@@ -147,9 +149,7 @@ function App() {
 
         <nav
           id="site-navigation"
-          className={
-            menuOpen ? 'navigation navigation-open' : 'navigation'
-          }
+          className={menuOpen ? 'navigation navigation-open' : 'navigation'}
           aria-label="Primary"
         >
           {navItems.map((item, i) => (
@@ -158,7 +158,7 @@ function App() {
               href={item.href}
               className={active === item.id ? 'is-active' : undefined}
               aria-current={active === item.id ? 'true' : undefined}
-              style={delay(80 + i * 55)}
+              style={delay(60 + i * 45)}
               onClick={closeMenu}
             >
               {item.label}
@@ -168,7 +168,7 @@ function App() {
           <a
             href={`${base}founder/`}
             className="nav-cta"
-            style={delay(80 + navItems.length * 55)}
+            style={delay(60 + navItems.length * 45)}
             onClick={closeMenu}
           >
             Meet the Founder <ArrowRight size={15} />
@@ -183,127 +183,97 @@ function App() {
           aria-expanded={menuOpen}
           aria-controls="site-navigation"
         >
-          {menuOpen ? <X /> : <Menu />}
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </header>
 
       <main id="main">
         {/* HERO */}
 
-        <section className="hero" id="home" ref={heroRef}>
-          <div className="hero-bg" aria-hidden="true">
-            <div
-              className="hero-aerial"
-              style={{ backgroundImage: `url("${img.aerial}")` }}
-            />
-            <div className="hero-fog fog-a" />
-            <div className="hero-fog fog-b" />
-            <div className="hero-beams">
-              <i />
-              <i />
-              <i />
-            </div>
-            <div className="hero-vignette" />
-          </div>
+        <section className="hero" id="home" ref={heroRef} data-parallax>
+          <div className="hero-glow" aria-hidden="true" />
 
-          <GoldDust />
-
-          <div className="hero-inner">
-            <div className="hero-content">
-              <div className="eyebrow hero-eyebrow">
-                <span className="eyebrow-line" />
-                INSPIRED BY THE SACRED CONFLUENCE
-                <span className="eyebrow-line" />
-              </div>
+          <div className="wrap hero-inner">
+            <div className="hero-copy">
+              <p className="eyebrow rise" style={delay(80)}>
+                Inspired by the sacred confluence
+              </p>
 
               <h1>
-                <span className="line">
-                  <span>DEVGANGA AMRIT</span>
+                <span className="rise" style={delay(160)}>
+                  DEVGANGA
+                </span>
+                <span className="rise" style={delay(260)}>
+                  AMRIT
                 </span>
               </h1>
 
-              <p className="hero-subtitle">A sacred connection to Devprayag</p>
-              <p className="hero-description">
-                Inspired by the confluence of the Alaknanda and Bhagirathi,
-                for your puja and sacred rituals.
+              <p className="hero-subtitle rise" style={delay(380)}>
+                A sacred connection to Devprayag
+              </p>
+              <p className="hero-description rise" style={delay(450)}>
+                Inspired by the confluence of the Alaknanda and Bhagirathi, for
+                your puja and sacred rituals.
               </p>
 
-              <div className="hero-actions">
-                <a href="#devprayag" className="button button-gold">
+              <div className="hero-actions rise" style={delay(540)}>
+                <a href="#devprayag" className="btn btn-primary">
                   Explore the Origin <ArrowRight size={17} />
                 </a>
-              </div>
-            </div>
-
-            <div className="hero-feature-glass" aria-label="Brand highlights">
-              <article className="hero-glass-tile">
-                <span className="hero-tile-icon"><Droplets size={26} strokeWidth={1.35} /></span>
-                <strong>From Devprayag</strong>
-                <small>At the meeting of two sacred rivers</small>
-              </article>
-              <article className="hero-glass-tile">
-                <span className="hero-tile-icon"><Flower2 size={27} strokeWidth={1.35} /></span>
-                <strong>For Puja</strong>
-                <small>For your sacred rituals and worship</small>
-              </article>
-              <article className="hero-glass-tile">
-                <span className="hero-tile-icon"><Mountain size={27} strokeWidth={1.35} /></span>
-                <strong>Himalayan Heritage</strong>
-                <small>Rooted in the spiritual landscape of Uttarakhand</small>
-              </article>
-            </div>
-
-            <div className="hero-stage">
-              <div className="stage-halo" aria-hidden="true" />
-              <div className="stage-ring" aria-hidden="true">
-                <i />
-                <i />
-                <i />
+                <a href="#story" className="btn btn-glass">
+                  Our Story
+                </a>
               </div>
 
-              <div className="stage-float">
-                <div className="stage-tilt">
-                  <div className="arch-outline" aria-hidden="true" />
+              <p className="hero-note rise" style={delay(640)}>
+                A heritage that flows through generations
+                <span aria-hidden="true"> · </span>
+                Rooted in heritage
+              </p>
+            </div>
 
-                  <figure className="bottle-card">
-                    <BottleImage eager />
-                    <span className="card-sheen" aria-hidden="true" />
-                  </figure>
+            <div className="hero-stage rise-stage" style={delay(200)}>
+              <div className="stage-tilt">
+                <div className="stage-frame">
+                  <img
+                    className="stage-img"
+                    src={img.aerial}
+                    width={864}
+                    height={1536}
+                    alt="Aerial view of Devprayag, where the Bhagirathi and Alaknanda rivers meet to form the Ganga"
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                  />
+                  <div className="stage-wash" aria-hidden="true" />
 
-                  <div className="bottle-reflection" aria-hidden="true">
-                    <img src={img.product768} alt="" decoding="async" />
-                  </div>
-
-                  <div className="chip chip-a" aria-hidden="true">
-                    <small>SIZE</small>
-                    <strong>250 ml</strong>
-                  </div>
-                  <div className="chip chip-b" aria-hidden="true">
-                    <small>STATUS</small>
-                    <strong>Concept visual</strong>
+                  <div className="glass stage-panel" aria-label="Brand highlights">
+                    {highlights.map(({ Icon, title, text }) => (
+                      <div className="stage-row" key={title}>
+                        <span className="stage-icon" aria-hidden="true">
+                          <Icon size={19} strokeWidth={1.5} />
+                        </span>
+                        <span>
+                          <strong>{title}</strong>
+                          <small>{text}</small>
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
+
+                <div className="glass stage-coords" aria-hidden="true">
+                  <span>
+                    30°08&apos; N <i /> 78°35&apos; E
+                  </span>
+                  <small>DEVPRAYAG · UTTARAKHAND</small>
+                </div>
+
+                <div className="glass stage-badge" aria-hidden="true">
+                  <img src={img.logo512} width={512} height={512} alt="" />
+                </div>
               </div>
-
-              <div className="stage-shadow" aria-hidden="true" />
             </div>
-          </div>
-
-          <div className="hero-caption">
-            <span>30°08&apos; N</span>
-            <span className="caption-divider" />
-            <span>78°35&apos; E</span>
-            <span className="caption-place">DEVPRAYAG · UTTARAKHAND</span>
-          </div>
-
-          <div className="hero-side-note">
-            A HERITAGE THAT FLOWS THROUGH GENERATIONS
-          </div>
-
-          <div className="hero-ribbon" aria-hidden="true">
-            <span>A SACRED CONNECTION TO DEVPRAYAG</span>
-            <span className="announcement-dot">✦</span>
-            <span>ROOTED IN HERITAGE</span>
           </div>
 
           <a
@@ -317,267 +287,257 @@ function App() {
 
         {/* OUR STORY */}
 
-        <section className="intro section-pad" id="story">
-          <div className="intro-label" data-reveal>
-            <span className="section-index">01 / OUR PHILOSOPHY</span>
-            <span className="gold-rule" />
-          </div>
-
-          <div className="intro-grid">
-            <div data-reveal style={delay(60)}>
-              <p className="eyebrow">MORE THAN A PLACE. A FEELING.</p>
-              <h2>
-                A sacred tradition,
-                <br />
-                <em>carried with care.</em>
-              </h2>
+        <section className="story section" id="story">
+          <div className="wrap">
+            <div className="section-head" data-reveal>
+              <span className="section-index">01 / Our philosophy</span>
             </div>
 
-            <div className="intro-copy" data-reveal style={delay(160)}>
-              <p>
-                Some places are more than destinations. They hold memories,
-                traditions and a sense of belonging that travels across
-                generations.
-              </p>
-              <p>
-                DevGanga Amrit draws inspiration from Devprayag, the revered
-                Himalayan confluence, bringing the spirit of this heritage into
-                your moments of prayer and devotion.
-              </p>
-              <a className="underlined-link" href="#devprayag">
-                The story of our origin <ArrowRight size={16} />
-              </a>
-            </div>
-          </div>
+            <div className="story-grid">
+              <div data-reveal style={delay(60)}>
+                <p className="eyebrow">More than a place. A feeling.</p>
+                <h2>
+                  A sacred tradition,
+                  <br />
+                  <em>carried with care.</em>
+                </h2>
+              </div>
 
-          <div className="values-row">
-            <article className="value-item" data-tilt data-reveal>
-              <Mountain size={26} strokeWidth={1.25} />
-              <div>
+              <div className="story-copy" data-reveal style={delay(160)}>
+                <p>
+                  Some places are more than destinations. They hold memories,
+                  traditions and a sense of belonging that travels across
+                  generations.
+                </p>
+                <p>
+                  DevGanga Amrit draws inspiration from Devprayag, the revered
+                  Himalayan confluence, bringing the spirit of this heritage
+                  into your moments of prayer and devotion.
+                </p>
+                <a className="link-arrow" href="#devprayag">
+                  The story of our origin <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            <ul className="values" aria-label="Brand values">
+              <li data-reveal>
+                <Mountain size={26} strokeWidth={1.25} aria-hidden="true" />
                 <h3>Himalayan Roots</h3>
                 <p>Inspired by the land of Devprayag.</p>
-              </div>
-            </article>
-
-            <article
-              className="value-item"
-              data-tilt
-              data-reveal
-              style={delay(110)}
-            >
-              <Sparkles size={26} strokeWidth={1.25} />
-              <div>
+              </li>
+              <li data-reveal style={delay(100)}>
+                <Sparkles size={26} strokeWidth={1.25} aria-hidden="true" />
                 <h3>Living Heritage</h3>
                 <p>Honouring traditions of devotion.</p>
-              </div>
-            </article>
-
-            <article
-              className="value-item"
-              data-tilt
-              data-reveal
-              style={delay(220)}
-            >
-              <ShieldCheck size={26} strokeWidth={1.25} />
-              <div>
+              </li>
+              <li data-reveal style={delay(200)}>
+                <ShieldCheck size={26} strokeWidth={1.25} aria-hidden="true" />
                 <h3>Thoughtful Purpose</h3>
                 <p>Created for religious and ritual use.</p>
-              </div>
-            </article>
+              </li>
+            </ul>
           </div>
         </section>
 
         {/* ABOUT */}
 
-        <section className="about-section section-pad" id="about">
-          <div className="about-glow" aria-hidden="true" />
-
-          <div className="about-grid">
+        <section className="about section section-tint" id="about">
+          <div className="wrap about-grid">
             <div data-reveal>
-              <span className="section-index">ABOUT DEVGANGA AMRIT</span>
-              <span className="gold-rule" />
-
+              <span className="section-index">About DEVGANGA AMRIT</span>
               <h2>
                 Rooted in faith.
                 <br />
                 <em>Inspired by Devprayag.</em>
               </h2>
-
-              <p className="about-copy">
+              <p className="lede">
                 DEVGANGA AMRIT is a spiritual heritage brand inspired by the
-                sacred traditions and natural beauty of Devprayag, Uttarakhand.
-                Our purpose is to bring an expression of this heritage into
-                homes and places of worship through products intended for
-                religious and ritual use.
+                sacred traditions and natural beauty of Devprayag,
+                Uttarakhand. Our purpose is to bring an expression of this
+                heritage into homes and places of worship through products
+                intended for religious and ritual use.
               </p>
             </div>
 
-            <div
-              className="founder-intro"
-              data-tilt
-              data-reveal
-              style={delay(140)}
-            >
-              <span className="eyebrow">THE PERSON BEHIND THE VISION</span>
+            <aside className="glass founder-card" data-reveal style={delay(140)}>
+              <img
+                className="founder-avatar"
+                src={img.founder}
+                width={320}
+                height={320}
+                alt="Rahul Sajwan, founder of DevGanga Amrit"
+                loading="lazy"
+                decoding="async"
+              />
+              <span className="eyebrow">The person behind the vision</span>
               <h3>Meet Rahul Sajwan</h3>
               <p>Founder of DevGanga Amrit</p>
               <a
                 href={`${base}founder/`}
-                className="button button-gold founder-button"
+                className="btn btn-primary"
                 aria-label="Meet Rahul Sajwan, founder of DevGanga Amrit"
               >
                 Meet the Founder <ArrowRight size={16} />
               </a>
-            </div>
+            </aside>
           </div>
         </section>
 
         {/* DEVPRAYAG */}
 
-        <section className="origin-section" id="devprayag" data-parallax>
-          <div
-            className="origin-image"
-            role="img"
-            aria-label="Aerial view of Devprayag, where the Bhagirathi and Alaknanda rivers meet to form the Ganga"
-            style={{ backgroundImage: `url("${img.aerial}")` }}
-          />
-          <div className="origin-shade" aria-hidden="true" />
+        <section className="origin section" id="devprayag">
+          <div className="wrap origin-grid">
+            <div className="origin-figure" data-reveal>
+              <div className="origin-frame" data-parallax>
+                <img
+                  className="origin-img"
+                  src={img.aerial}
+                  width={864}
+                  height={1536}
+                  alt="Aerial view of Devprayag, where the Bhagirathi and Alaknanda rivers meet to form the Ganga"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="glass origin-chip">
+                  <small>The confluence</small>
+                  <strong>Bhagirathi &amp; Alaknanda</strong>
+                </div>
+              </div>
+            </div>
 
-          <span className="origin-watermark" aria-hidden="true">
-            DEVPRAYAG
-          </span>
-
-          <div className="origin-content" data-reveal>
-            <span className="section-index">02 / OUR ORIGIN</span>
-            <span className="gold-rule" />
-            <p className="eyebrow">IN THE HEART OF THE HIMALAYAS</p>
-
-            <h2>
-              Devprayag.
-              <br />
-              <em>Where a sacred journey begins.</em>
-            </h2>
-
-            <p className="origin-description">
-              Nestled in Uttarakhand, Devprayag is known for the confluence of
-              the Bhagirathi and Alaknanda rivers, which together form the
-              Ganga. Its landscape and spiritual traditions inspire everything
-              our brand stands for.
-            </p>
-
-            <a href="#product" className="button button-outline">
-              Explore the collection <ArrowRight size={16} />
-            </a>
+            <div className="origin-copy" data-reveal style={delay(120)}>
+              <span className="section-index">02 / Our origin</span>
+              <p className="eyebrow">In the heart of the Himalayas</p>
+              <h2>
+                Devprayag.
+                <br />
+                <em>Where a sacred journey begins.</em>
+              </h2>
+              <p className="lede">
+                Nestled in Uttarakhand, Devprayag is known for the confluence
+                of the Bhagirathi and Alaknanda rivers, which together form
+                the Ganga. Its landscape and spiritual traditions inspire
+                everything our brand stands for.
+              </p>
+              <a href="#product" className="btn btn-glass">
+                Explore the collection <ArrowRight size={16} />
+              </a>
+            </div>
           </div>
         </section>
 
         {/* PRODUCT */}
 
-        <section className="product-section section-pad" id="product">
-          <div className="product-heading" data-reveal>
-            <span className="section-index">03 / OUR OFFERING</span>
-            <p className="eyebrow">A MOMENT OF DEVOTION</p>
-            <h2>
-              Tradition, held
-              <br />
-              <em>with reverence.</em>
-            </h2>
-            <p className="product-intro">
-              An offering inspired by the spiritual heritage of Devprayag,
-              intended for your sacred rituals and moments of prayer.
-            </p>
-          </div>
+        <section
+          className="product section section-tint"
+          id="product"
+          ref={productRef}
+        >
+          <div className="wrap">
+            <div className="product-heading" data-reveal>
+              <span className="section-index">03 / Our offering</span>
+              <p className="eyebrow">A moment of devotion</p>
+              <h2>
+                Tradition, held
+                <br />
+                <em>with reverence.</em>
+              </h2>
+              <p className="lede">
+                An offering inspired by the spiritual heritage of Devprayag,
+                intended for your sacred rituals and moments of prayer.
+              </p>
+            </div>
 
-          <div className="product-showcase">
-            <div className="product-art">
-              <GoldDust density={0.5} />
-              <div className="spot-cone" aria-hidden="true" />
-              <div className="product-halo" aria-hidden="true" />
-              <div className="product-orbit orbit-one" aria-hidden="true" />
-              <div className="product-orbit orbit-two" aria-hidden="true" />
-
-              <div className="product-pedestal" aria-hidden="true" />
-
-              <figure className="product-card" data-tilt data-reveal>
-                <BottleImage />
-                <span className="card-sheen" aria-hidden="true" />
+            <div className="product-stage">
+              <figure className="product-frame" data-reveal>
+                <img
+                  src={img.product768}
+                  srcSet={`${img.product768} 768w, ${img.product} 1024w`}
+                  sizes="(max-width: 900px) 86vw, 460px"
+                  width={1024}
+                  height={1535}
+                  alt="DEVGANGA AMRIT 250 ml Ganga Jal bottle concept visual, shown against the Devprayag river landscape"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="glass product-caption">
+                  <small>Concept visual</small>
+                  <strong>Inspired by the sacred Ganga</strong>
+                </figcaption>
               </figure>
 
-              <span className="product-art-caption">
-                INSPIRED BY THE SACRED GANGA
-              </span>
+              <div
+                className="glass product-details"
+                data-reveal
+                style={delay(120)}
+              >
+                <p className="eyebrow">The DevGanga collection</p>
+                <h3>DevGanga Amrit</h3>
+                <p className="product-subtitle">Ganga Jal · 250 ml</p>
+
+                <p className="product-description">
+                  Thoughtfully presented for puja, prayer and religious
+                  observances. A reminder of the spiritual connection between
+                  tradition, place and devotion.
+                </p>
+
+                <dl className="specs">
+                  <div>
+                    <dt>Product</dt>
+                    <dd>Ganga Jal</dd>
+                  </div>
+                  <div>
+                    <dt>Size</dt>
+                    <dd>250 ml</dd>
+                  </div>
+                  <div>
+                    <dt>Intended use</dt>
+                    <dd>Religious &amp; ritual use only</dd>
+                  </div>
+                </dl>
+
+                <p className="ritual-warning">
+                  For religious &amp; ritual use only — not for drinking.
+                </p>
+
+                <a href="#contact" className="btn btn-primary">
+                  Enquire About Our Product <ArrowRight size={16} />
+                </a>
+
+                <p className="availability-note">
+                  Visual concept only. Product availability and pricing are not
+                  confirmed.
+                </p>
+              </div>
             </div>
 
-            <div
-              className="product-details"
-              data-reveal
-              style={delay(120)}
-            >
-              <p className="eyebrow">THE DEVGANGA COLLECTION</p>
-              <h3>DevGanga Amrit</h3>
-              <p className="product-subtitle">Ganga Jal · 250 ml</p>
-              <span className="gold-rule" />
-
-              <p className="product-description">
-                Thoughtfully presented for puja, prayer and religious
-                observances. A reminder of the spiritual connection between
-                tradition, place and devotion.
-              </p>
-
-              <div className="product-spec">
-                <span>PRODUCT</span>
-                <span>Ganga Jal</span>
-              </div>
-              <div className="product-spec">
-                <span>SIZE</span>
-                <span>250 ml</span>
-              </div>
-              <div className="product-spec">
-                <span>INTENDED USE</span>
-                <span>Religious &amp; ritual use only</span>
-              </div>
-
-              <p className="ritual-warning">
-                FOR RELIGIOUS &amp; RITUAL USE ONLY — NOT FOR DRINKING.
-              </p>
-
-              <a href="#contact" className="button button-gold">
-                Enquire About Our Product <ArrowRight size={16} />
-              </a>
-
-              <p className="availability-note">
-                Visual concept only. Product availability and pricing are not confirmed.
-              </p>
-            </div>
+            <ul className="occasions" data-reveal aria-label="Observances">
+              {occasions.map(({ label, Icon }) => (
+                <li key={label}>
+                  <Icon size={22} strokeWidth={1.3} aria-hidden="true" />
+                  <span>{label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <ul className="occasions" data-reveal aria-label="Observances">
-            {occasions.map(({ label, Icon }) => (
-              <li key={label}>
-                <Icon size={22} strokeWidth={1.2} aria-hidden="true" />
-                <span>{label}</span>
-              </li>
-            ))}
-          </ul>
         </section>
 
         {/* CLOSING */}
 
-        <section className="closing-section">
-          <div className="closing-pattern" aria-hidden="true" />
-
-          <div data-reveal>
-            <span className="eyebrow">A CONNECTION THAT ENDURES</span>
+        <section className="closing section">
+          <div className="wrap closing-inner" data-reveal>
+            <p className="eyebrow">A connection that endures</p>
             <h2>
               Bring tradition
               <br />
               <em>closer to home.</em>
             </h2>
-            <p>
+            <p className="lede">
               Inspired by Devprayag. Created with reverence for your sacred
               rituals.
             </p>
-            <a href="#contact" className="button button-dark">
+            <a href="#contact" className="btn btn-primary">
               Connect With Us <ArrowRight size={16} />
             </a>
           </div>
@@ -587,45 +547,49 @@ function App() {
       {/* FOOTER */}
 
       <footer className="site-footer" id="contact">
-        <div className="footer-main">
-          <div className="footer-brandblock">
-            <Brand footer />
-            <p className="footer-story">
-              A spiritual heritage brand inspired by Devprayag, Uttarakhand.
-            </p>
-          </div>
+        <div className="wrap">
+          <div className="footer-main">
+            <div className="footer-brandblock">
+              <Brand footer />
+              <p className="footer-story">
+                A spiritual heritage brand inspired by Devprayag, Uttarakhand.
+              </p>
+            </div>
 
-          <nav className="footer-nav" aria-label="Footer">
-            <span className="eyebrow">EXPLORE</span>
-            {navItems.slice(1, 5).map((item) => (
-              <a key={item.label} href={item.href}>
-                {item.label}
+            <nav className="footer-col" aria-label="Footer">
+              <span className="eyebrow">Explore</span>
+              {navItems.slice(1, 5).map((item) => (
+                <a key={item.label} href={item.href}>
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className="footer-col">
+              <span className="eyebrow">Get in touch</span>
+              <a href="mailto:devgangaamrit@gmail.com">
+                devgangaamrit@gmail.com
               </a>
-            ))}
-          </nav>
-
-          <div className="footer-contact">
-            <span className="eyebrow">GET IN TOUCH</span>
-            <a href="mailto:devgangaamrit@gmail.com">
-              devgangaamrit@gmail.com
-            </a>
-            <a href="tel:+919643345474">+91 96433 45474</a>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              WhatsApp Enquiry <ArrowRight size={14} />
-            </a>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} DEVGANGA AMRIT</span>
-          <span>INSPIRED BY DEVPRAYAG, UTTARAKHAND, INDIA</span>
-
-          <div className="footer-legal-links">
-            <a href={`${base}?page=privacy-policy`}>PRIVACY POLICY</a>
-            <a href={`${base}?page=terms`}>TERMS &amp; CONDITIONS</a>
+              <a href="tel:+919643345474">+91 96433 45474</a>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp Enquiry <ArrowRight size={14} />
+              </a>
+            </div>
           </div>
 
-          <a href="#home">BACK TO TOP ↑</a>
+          <div className="footer-bottom">
+            <span>© {new Date().getFullYear()} DEVGANGA AMRIT</span>
+            <span>Inspired by Devprayag, Uttarakhand, India</span>
+            <div className="footer-legal-links">
+              <a href={`${base}?page=privacy-policy`}>Privacy Policy</a>
+              <a href={`${base}?page=terms`}>Terms &amp; Conditions</a>
+            </div>
+            <a href="#home">Back to top ↑</a>
+          </div>
         </div>
       </footer>
 
@@ -636,9 +600,9 @@ function App() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Enquire about DevGanga Amrit on WhatsApp"
-        className="floating-whatsapp"
+        className="glass floating-whatsapp"
       >
-        <MessageCircle size={22} />
+        <MessageCircle size={21} />
         <span>Enquire on WhatsApp</span>
       </a>
     </>
