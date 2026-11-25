@@ -1,0 +1,51 @@
+/* DEVGANGA AMRIT — Subtle Liquid Glass Reflection */
+.hero-ribbon {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-ribbon::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  left: -45%;
+  width: 22%;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.015) 25%,
+    rgba(255, 255, 255, 0.20) 50%,
+    rgba(255, 255, 255, 0.015) 75%,
+    transparent 100%
+  );
+  transform: skewX(-18deg);
+  animation: dg-glass-reflection 8s ease-in-out infinite;
+}
+
+@keyframes dg-glass-reflection {
+  0%, 15% {
+    left: -45%;
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.65;
+  }
+  55% {
+    left: 125%;
+    opacity: 0.45;
+  }
+  65%, 100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ribbon::after {
+    animation: none;
+    display: none;
+  }
+}
