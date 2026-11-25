@@ -66,6 +66,11 @@
     .brand-section{background:linear-gradient(180deg,var(--paper),var(--paper-2))}.brand-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(36px,7vw,100px);align-items:center}.brand-section h2{max-width:600px}
     .brand-panel{padding:clamp(28px,4vw,48px);border-radius:var(--r-lg)}.brand-panel .small{margin-bottom:14px;color:var(--gold-text);font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}.brand-panel h3{margin:0 0 14px}.brand-panel p{margin:0}
     .return-row{margin-top:34px}
+    .marketplace-launch{max-width:850px;margin:64px auto 0;padding-top:28px;border-top:1px solid var(--line)}.marketplace-launch .section-kicker{margin-bottom:8px}.marketplace-note{margin:0 0 18px;color:var(--ink-2);font-size:.875rem}
+    .marketplace-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.marketplace-button{display:inline-flex;min-width:0;min-height:54px;align-items:center;justify-content:center;gap:9px;padding:10px 14px;border:0;border-radius:17px;background:linear-gradient(140deg,rgba(255,255,255,.72),rgba(255,217,181,.42));color:var(--ink);font-size:.875rem;font-weight:600;line-height:1.25;text-align:center;-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.96),0 0 0 1px rgba(255,255,255,.78),0 6px 16px -10px rgba(109,55,25,.35);transition:transform .25s var(--ease-out),box-shadow .3s var(--ease),background .3s var(--ease)}.marketplace-button svg{flex:none;color:var(--gold-text)}.marketplace-button:hover{transform:translateY(-2px);background:linear-gradient(140deg,rgba(255,255,255,.9),rgba(255,217,181,.58));box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(255,255,255,.96),0 10px 20px -10px rgba(109,55,25,.4)}.marketplace-button:active{transform:translateY(0) scale(.985)}.marketplace-button:focus-visible,.coming-soon-close:focus-visible{outline:2px solid #B9531D;outline-offset:4px}
+    .coming-soon-dialog{width:min(560px,calc(100vw - 32px));max-width:none;max-height:calc(100dvh - 32px);margin:auto;padding:0;overflow:auto;border:1px solid rgba(255,255,255,.88);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(255,241,227,.95) 58%,rgba(255,228,204,.94));color:var(--ink);-webkit-backdrop-filter:blur(28px) saturate(160%);backdrop-filter:blur(28px) saturate(160%);box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(185,83,29,.1),0 32px 90px -34px rgba(84,42,24,.48);animation:coming-soon-enter .45s var(--ease-out) both}.coming-soon-dialog::backdrop{background:rgba(51,30,19,.58);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);animation:coming-soon-backdrop .3s ease-out both}
+    .coming-soon-content{position:relative;padding:clamp(32px,7vw,52px)}.coming-soon-close{position:absolute;top:18px;right:18px;display:grid;width:42px;height:42px;place-items:center;border:1px solid rgba(185,83,29,.2);border-radius:50%;background:rgba(255,255,255,.7);color:var(--ink);transition:transform .25s var(--ease-out),background .25s var(--ease)}.coming-soon-close:hover{transform:rotate(5deg);background:#fff}.coming-soon-badge{display:inline-block;margin-bottom:26px;padding:7px 12px;border:1px solid rgba(185,83,29,.22);border-radius:999px;background:rgba(232,120,34,.1);color:var(--gold-text);font-size:.625rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.coming-soon-eyebrow{margin-bottom:12px;color:var(--gold-text);font-size:.6875rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.coming-soon-dialog h2{max-width:13em;margin:0 0 20px;font-family:var(--serif);font-size:clamp(2rem,7vw,3rem);font-weight:500;line-height:1.08;letter-spacing:-.025em}.coming-soon-copy{color:var(--ink-2);font-size:.9375rem;line-height:1.75}.coming-soon-copy p+p{margin-top:12px}.coming-soon-closing{margin-top:22px;color:var(--ink);font-size:.9375rem;font-weight:600}.coming-soon-signature{display:flex;flex-direction:column;margin-top:24px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-2);font-size:.875rem}.coming-soon-signature strong{margin-top:2px;color:var(--ink);font-weight:600}
+    @keyframes coming-soon-enter{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes coming-soon-backdrop{from{opacity:0}to{opacity:1}}
     .devprayag-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(36px,8vw,120px)}
     .devprayag-frame{position:relative;overflow:hidden;aspect-ratio:4/5;max-width:520px;border-radius:var(--r-lg);background:var(--paper-2);box-shadow:0 0 0 1px rgba(17,17,17,.08),0 50px 90px -44px rgba(17,17,17,.45)}.devprayag-frame img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;object-position:50% 55%}
     .devprayag-chip{position:absolute;left:16px;bottom:16px;padding:14px 20px;border-radius:20px}.devprayag-chip small{display:block;color:var(--ink-3);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase}.devprayag-chip strong{display:block;margin-top:2px;font:600 1.35rem/1.2 var(--serif);color:var(--ink)}
@@ -90,7 +95,7 @@
       .wrap{width:min(100% - 36px,1200px)}.brand img{width:38px;height:38px}.brand-text strong{font-size:.75rem;letter-spacing:.08em}.hero{padding:104px 0 80px}.hero-actions .button{flex:1 1 100%}
       .portrait-frame{transform:none}.portrait-label{left:-6px;bottom:18px;padding:12px 16px}
       .principles{grid-template-columns:1fr}.principle,.principle+.principle{padding:28px 0;border-left:0}.principle+.principle{border-top:1px solid var(--line)}
-      .contact-actions{flex-direction:column;align-items:stretch}.contact .button{white-space:normal;width:100%}.return-row .button{flex:1 1 100%}.footer-inner{align-items:flex-start;flex-direction:column}
+      .contact-actions{flex-direction:column;align-items:stretch}.contact .button{white-space:normal;width:100%}.return-row .button{flex:1 1 100%}.footer-inner{align-items:flex-start;flex-direction:column}.marketplace-buttons{grid-template-columns:1fr}
     }
     @media(hover:none){.portrait-frame{transform:rotateY(-3deg)}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;animation-delay:0ms!important;transition-duration:.001ms!important;transition-delay:0ms!important}[data-reveal]{opacity:1;transform:none}.portrait-frame{transform:none}}
@@ -186,6 +191,24 @@
           <p>The project is in development. Its initial product concept is a 250 ml Ganga Jal bottle intended for religious and ritual use only. It is not for drinking, and availability or launch status is not being represented as confirmed.</p>
         </aside>
       </div>
+      <div class="wrap marketplace-launch" data-reveal>
+        <div class="section-kicker">OUR MARKETPLACE LAUNCH</div>
+        <p class="marketplace-note">We are not listed yet. Choose a marketplace to hear about our upcoming launch.</p>
+        <div class="marketplace-buttons" role="group" aria-label="Marketplace launch updates">
+          <button class="marketplace-button" type="button" aria-haspopup="dialog" data-marketplace-open>
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18l-1.5 11h-15L3 9Z"/><path d="M5 9l2-6h10l2 6M9 13v3m6-3v3"/></svg>
+            <span>Buy on Amazon</span>
+          </button>
+          <button class="marketplace-button" type="button" aria-haspopup="dialog" data-marketplace-open>
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18l-1.5 11h-15L3 9Z"/><path d="M5 9l2-6h10l2 6M9 13v3m6-3v3"/></svg>
+            <span>Buy on Flipkart</span>
+          </button>
+          <button class="marketplace-button" type="button" aria-haspopup="dialog" data-marketplace-open>
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18l-1.5 11h-15L3 9Z"/><path d="M5 9l2-6h10l2 6M9 13v3m6-3v3"/></svg>
+            <span>Buy on Meesho</span>
+          </button>
+        </div>
+      </div>
     </section>
 
     <section class="section devprayag" id="devprayag">
@@ -218,13 +241,39 @@
   </main>
 
   <footer class="footer"><div class="wrap footer-inner"><a class="footer-brand" href="../">DEVGANGA AMRIT</a><span>Founder: Rahul Sajwan</span><a href="mailto:rolysajwan@gmail.com">rolysajwan@gmail.com</a><span>© <span id="year">2026</span> DEVGANGA AMRIT</span></div></footer>
+  <dialog class="coming-soon-dialog" id="coming-soon-dialog" aria-labelledby="coming-soon-title">
+    <div class="coming-soon-content">
+      <button class="coming-soon-close" type="button" aria-label="Close coming soon message" autofocus>
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"/></svg>
+      </button>
+      <span class="coming-soon-badge">Coming Soon</span>
+      <p class="coming-soon-eyebrow">A little something is on its way</p>
+      <h2 id="coming-soon-title">A Sacred Journey Is About to Begin.</h2>
+      <div class="coming-soon-copy">
+        <p>Thank you for your interest in DevGanga Amrit.</p>
+        <p>We're preparing to bring our sacred offering to this marketplace. Our launch is coming soon, and we'd love for you to be part of the journey.</p>
+      </div>
+      <p class="coming-soon-closing">Stay connected. The wait will be worth it.</p>
+      <p class="coming-soon-signature">With devotion,<strong>Team DevGanga Amrit</strong></p>
+    </div>
+  </dialog>
   </div>
   <script>
     (() => {
       const header = document.getElementById('header');
       const menu = document.getElementById('menu');
       const nav = document.getElementById('nav');
+      const marketplaceDialog = document.getElementById('coming-soon-dialog');
+      let previousBodyOverflow = '';
       const closeMenu = () => { header.classList.remove('menu-open'); menu.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-label', 'Open navigation'); menu.textContent = '☰'; };
+      document.querySelectorAll('[data-marketplace-open]').forEach(button => button.addEventListener('click', () => {
+        previousBodyOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        marketplaceDialog.showModal();
+      }));
+      marketplaceDialog.querySelector('.coming-soon-close').addEventListener('click', () => marketplaceDialog.close());
+      marketplaceDialog.addEventListener('click', event => { if (event.target === marketplaceDialog) marketplaceDialog.close(); });
+      marketplaceDialog.addEventListener('close', () => { document.body.style.overflow = previousBodyOverflow; });
       menu.addEventListener('click', () => { const open = header.classList.toggle('menu-open'); menu.setAttribute('aria-expanded', String(open)); menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation'); menu.textContent = open ? '×' : '☰'; });
       nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
       document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });

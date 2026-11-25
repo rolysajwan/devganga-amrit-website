@@ -19,6 +19,7 @@ import {
   Mountain,
   ShieldCheck,
   Sparkles,
+  Store,
   X,
 } from 'lucide-react'
 import {
@@ -60,6 +61,8 @@ const occasions = [
   { label: 'Shraddh', Icon: Landmark },
   { label: 'Festivals', Icon: Sparkles },
 ]
+
+const marketplaces = ['Amazon', 'Flipkart', 'Meesho']
 
 const highlights = [
   {
@@ -104,8 +107,102 @@ function Brand({ footer = false }: { footer?: boolean }) {
   )
 }
 
+function MarketplaceButtons({ onSelect }: { onSelect: () => void }) {
+  return (
+    <div
+      className="marketplace-buttons"
+      role="group"
+      aria-label="Marketplace launch updates"
+    >
+      {marketplaces.map((marketplace) => (
+        <button
+          key={marketplace}
+          type="button"
+          className="marketplace-button"
+          aria-haspopup="dialog"
+          onClick={onSelect}
+        >
+          <Store size={17} strokeWidth={1.6} aria-hidden="true" />
+          <span>Buy on {marketplace}</span>
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function ComingSoonDialog({
+  open,
+  onClose,
+}: {
+  open: boolean
+  onClose: () => void
+}) {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+
+    if (open && !dialog.open) dialog.showModal()
+  }, [open])
+
+  useEffect(() => {
+    if (!open) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [open])
+
+  const closeDialog = () => dialogRef.current?.close()
+
+  return (
+    <dialog
+      ref={dialogRef}
+      className="coming-soon-dialog"
+      aria-labelledby="coming-soon-title"
+      onClose={onClose}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) closeDialog()
+      }}
+    >
+      <div className="coming-soon-content">
+        <button
+          className="coming-soon-close"
+          type="button"
+          aria-label="Close coming soon message"
+          onClick={closeDialog}
+          autoFocus
+        >
+          <X size={19} aria-hidden="true" />
+        </button>
+        <span className="coming-soon-badge">Coming Soon</span>
+        <p className="coming-soon-eyebrow">A little something is on its way</p>
+        <h2 id="coming-soon-title">A Sacred Journey Is About to Begin.</h2>
+        <div className="coming-soon-copy">
+          <p>Thank you for your interest in DevGanga Amrit.</p>
+          <p>
+            We're preparing to bring our sacred offering to this marketplace.
+            Our launch is coming soon, and we'd love for you to be part of the
+            journey.
+          </p>
+        </div>
+        <p className="coming-soon-closing">
+          Stay connected. The wait will be worth it.
+        </p>
+        <p className="coming-soon-signature">
+          With devotion,
+          <strong>Team DevGanga Amrit</strong>
+        </p>
+      </div>
+    </dialog>
+  )
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [marketplaceDialogOpen, setMarketplaceDialogOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('home')
   const heroRef = useRef<HTMLElement>(null)
@@ -518,6 +615,16 @@ function App() {
                   Visual concept only. Product availability and pricing are not
                   confirmed.
                 </p>
+                <div className="marketplace-launch">
+                  <p className="eyebrow">Our marketplace launch</p>
+                  <p className="marketplace-note">
+                    We are not listed yet. Choose a marketplace to hear about
+                    our upcoming launch.
+                  </p>
+                  <MarketplaceButtons
+                    onSelect={() => setMarketplaceDialogOpen(true)}
+                  />
+                </div>
               </div>
             </div>
 
@@ -647,6 +754,11 @@ function App() {
         <MessageCircle size={21} />
         <span>Enquire on WhatsApp</span>
       </a>
+
+      <ComingSoonDialog
+        open={marketplaceDialogOpen}
+        onClose={() => setMarketplaceDialogOpen(false)}
+      />
     </>
   )
 }
