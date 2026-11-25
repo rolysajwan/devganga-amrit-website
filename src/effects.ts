@@ -48,17 +48,22 @@ export function useScrollEffects(onScrolled: (scrolled: boolean) => void) {
     )
     const still = reducedMotion()
     let raf = 0
+    let lastScrolled: boolean | undefined
 
     const update = () => {
       raf = 0
-      onScrolled(window.scrollY > 40)
+      const scrolled = window.scrollY > 40
+      if (scrolled !== lastScrolled) {
+        lastScrolled = scrolled
+        onScrolled(scrolled)
+      }
       if (still) return
       const vh = window.innerHeight
       for (const el of els) {
         const r = el.getBoundingClientRect()
         if (r.bottom < -120 || r.top > vh + 120) continue
         const p = (r.top + r.height / 2 - vh / 2) / vh
-        el.style.setProperty('--p', Math.max(-1.5, Math.min(1.5, p)).toFixed(4))
+        el.style.setProperty('--p', Math.max(-1, Math.min(1, p)).toFixed(4))
       }
     }
 
