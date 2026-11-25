@@ -45,6 +45,7 @@ const img = {
   logo512: `${base}images/logo-512.png`,
   product: `${base}images/product-bottle.webp`,
   product768: `${base}images/product-bottle-768.webp`,
+  poster: `${base}images/devganga-amrit-poster.png`,
   aerial: `${base}images/devprayag-aerial.webp`,
   founder: `${base}images/founder-thumb.webp`,
 }
@@ -517,6 +518,17 @@ function App() {
                 </p>
               </div>
             </div>
+
+            <figure className="brand-poster" data-reveal>
+              <img
+                src={img.poster}
+                width={1024}
+                height={1536}
+                alt="DEVGANGA AMRIT brand poster"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
 
             <ul className="occasions" data-reveal aria-label="Observances">
               {occasions.map(({ label, Icon }) => (

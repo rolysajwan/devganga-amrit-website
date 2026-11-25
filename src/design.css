@@ -1007,6 +1007,18 @@ p {
   object-fit: cover;
 }
 
+.brand-poster {
+  width: min(100%, 440px);
+  margin: clamp(56px, 8vw, 104px) auto 0;
+  box-shadow: 0 24px 60px -30px rgba(17, 17, 17, 0.45);
+}
+
+.brand-poster img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 /* disclosure caption: this bottle is a concept visual, not a confirmed product */
 .product-caption {
   position: absolute;
