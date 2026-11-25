@@ -46,6 +46,9 @@ export function useScrollEffects(onScrolled: (scrolled: boolean) => void) {
     const els = Array.from(
       document.querySelectorAll<HTMLElement>('[data-parallax]'),
     )
+    const orbs = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-scroll-orb]'),
+    )
     const progress = document.querySelector<HTMLElement>('.scroll-progress')
     const still = reducedMotion()
     let raf = 0
@@ -60,12 +63,29 @@ export function useScrollEffects(onScrolled: (scrolled: boolean) => void) {
       }
       const maxScroll =
         document.documentElement.scrollHeight - window.innerHeight
-      progress?.style.setProperty(
-        '--scroll-progress',
-        (maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0)
-          .toFixed(4),
-      )
+      const pageProgress =
+        maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0
+      progress?.style.setProperty('--scroll-progress', pageProgress.toFixed(4))
       if (still) return
+
+      for (const orb of orbs) {
+        const driftX = Number(orb.dataset.driftX ?? 0)
+        const driftY = Number(orb.dataset.driftY ?? 0)
+        const driftRotation = Number(orb.dataset.driftRotation ?? 0)
+        orb.style.setProperty(
+          '--orb-scroll-x',
+          `${(window.innerWidth * driftX * pageProgress).toFixed(2)}px`,
+        )
+        orb.style.setProperty(
+          '--orb-scroll-y',
+          `${(window.innerHeight * driftY * pageProgress).toFixed(2)}px`,
+        )
+        orb.style.setProperty(
+          '--orb-scroll-rotation',
+          `${(driftRotation * pageProgress).toFixed(2)}deg`,
+        )
+      }
+
       const vh = window.innerHeight
       for (const el of els) {
         const r = el.getBoundingClientRect()
