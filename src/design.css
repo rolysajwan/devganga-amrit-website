@@ -1646,3 +1646,88 @@ main:not(#main) p {
     transform: none;
   }
 }
+
+/* ==========================================
+   DEVGANGA AMRIT — CINEMATIC SCROLL MOTION
+   Progressive enhancement; respects reduced motion.
+   ========================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Smoother reveal for existing observed elements */
+  .js [data-reveal] {
+    transition:
+      opacity 900ms cubic-bezier(.22, 1, .36, 1),
+      transform 1000ms cubic-bezier(.22, 1, .36, 1),
+      filter 900ms cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .js [data-reveal]:not(.is-visible) {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+    filter: blur(4px);
+  }
+
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+
+  /* Subtle depth on imagery without replacing existing transforms */
+  .stage-img img,
+  .origin-img img {
+    transition:
+      filter 800ms ease,
+      opacity 800ms ease;
+  }
+
+  .stage-img:hover img,
+  .origin-img:hover img {
+    filter: saturate(1.04);
+  }
+
+  /* Refined interactive response */
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    button,
+    a {
+      transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+    }
+  }
+
+  /* Native scroll-driven reveal in supported browsers */
+  @supports (animation-timeline: view()) {
+    .js [data-reveal] {
+      animation: dg-scroll-reveal both linear;
+      animation-timeline: view();
+      animation-range: entry 0% entry 75%;
+    }
+
+    @keyframes dg-scroll-reveal {
+      from {
+        opacity: 0;
+        filter: blur(4px);
+        translate: 0 28px;
+      }
+      to {
+        opacity: 1;
+        filter: blur(0);
+        translate: 0 0;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
