@@ -36,53 +36,59 @@ const navItems = [
 { label: 'Our Story', href: '#story', id: 'story' },
 { label: 'Devprayag', href: '#devprayag', id: 'devprayag' },
 { label: 'The Product', href: '#product', id: 'product' },
-{ label: 'Founder', href: ${base}founder/, id: '' },
+const navItems = [
+  { label: 'The Product', href: '#product', id: 'product' },
+  { label: 'Founder', href: `${base}founder/`, id: '' },
 ]
-const sectionIds = navItems.filter((item) => item.id).map((item) => item.id)
+
+const sectionIds = navItems
+  .filter((item) => item.id)
+  .map((item) => item.id)
 
 const whatsappLink =
-'https://wa.me/919643345474?text=Hello%2C%20DEVGANGA%20AMRIT%20Team!%20I%20would%20like%20to%20know%20more%20about%20your%20Ganga%20Jal%20product.'
+  'https://wa.me/919643345474?text=Hello%2C%20DEVGANGA%20AMRIT%20Team!%20I%20would%20like%20to%20know%20more%20about%20your%20Ganga%20Jal%20product.'
 
 const img = {
-logo128: ${base}images/logo-128.png,
-logo512: ${base}images/logo-512.png,
-product: ${base}images/product-bottle.webp,
-product768: ${base}images/product-bottle-768.webp,
-poster: ${base}images/devganga-amrit-poster.png,
-aerial: ${base}images/devprayag-aerial.webp,
-founder: ${base}images/founder-thumb.webp,
+  logo128: `${base}images/logo-128.png`,
+  logo512: `${base}images/logo-512.png`,
+  product: `${base}images/product-bottle.webp`,
+  product768: `${base}images/product-bottle-768.webp`,
+  poster: `${base}images/devganga-amrit-poster.png`,
+  aerial: `${base}images/devprayag-aerial.webp`,
+  founder: `${base}images/founder-thumb.webp`,
 }
 
 const occasions = [
-{ label: 'Puja', Icon: Flower2 },
-{ label: 'Abhishek', Icon: Droplets },
-{ label: 'Havan', Icon: Flame },
-{ label: 'Tarpan', Icon: Hand },
-{ label: 'Shraddh', Icon: Landmark },
-{ label: 'Festivals', Icon: Sparkles },
+  { label: 'Puja', Icon: Flower2 },
+  { label: 'Abhishek', Icon: Droplets },
+  { label: 'Havan', Icon: Flame },
+  { label: 'Tarpan', Icon: Hand },
+  { label: 'Shraddh', Icon: Landmark },
+  { label: 'Festivals', Icon: Sparkles },
 ]
 
 const marketplaces = ['Amazon', 'Flipkart', 'Meesho']
 
 const highlights = [
-{
-Icon: Droplets,
-title: 'From Devprayag',
-text: 'At the meeting of two sacred rivers',
-},
-{
-Icon: Flower2,
-title: 'For Puja',
-text: 'For your sacred rituals and worship',
-},
-{
-Icon: Mountain,
-title: 'Himalayan Heritage',
-text: 'Rooted in the spiritual landscape of Uttarakhand',
-},
+  {
+    Icon: Droplets,
+    title: 'From Devprayag',
+    text: 'At the meeting of two sacred rivers',
+  },
+  {
+    Icon: Flower2,
+    title: 'For Puja',
+    text: 'For your sacred rituals and worship',
+  },
+  {
+    Icon: Mountain,
+    title: 'Himalayan Heritage',
+    text: 'Rooted in the spiritual landscape of Uttarakhand',
+  },
 ]
 
-const delay = (ms: number) => ({ '--d': ${ms}ms }) as CSSProperties
+const delay = (ms: number) =>
+  ({ '--d': `${ms}ms` }) as CSSProperties
 
 function Brand({ footer = false }: { footer?: boolean }) {
 return (
