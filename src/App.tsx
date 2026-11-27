@@ -19,7 +19,6 @@ import {
   Mountain,
   ShieldCheck,
   Sparkles,
-  Store,
   X,
 } from 'lucide-react'
 import {
@@ -65,11 +64,11 @@ const occasions = [
 type Marketplace = 'amazon' | 'flipkart' | 'meesho'
 
 // Marketplace names and the existing CTA copy. Official Flipkart / Meesho
-// logo files can be supplied via `logoSrc` (e.g. `${base}images/marketplaces/flipkart.svg`).
+// logo files live in public/images/marketplaces/.
 const marketplaces: { id: Marketplace; name: string; logoSrc?: string }[] = [
   { id: 'amazon', name: 'Amazon' },
-  { id: 'flipkart', name: 'Flipkart' },
-  { id: 'meesho', name: 'Meesho' },
+  { id: 'flipkart', name: 'Flipkart', logoSrc: `${base}images/marketplaces/flipkart.png` },
+  { id: 'meesho', name: 'Meesho', logoSrc: `${base}images/marketplaces/meesho.png` },
 ]
 
 // Amazon "a" glyph — Font Awesome Free (CC BY 4.0), fontawesome.com
@@ -142,10 +141,8 @@ function MarketplaceButtons({ onSelect }: { onSelect: () => void }) {
           <span className="mp-btn__logo" aria-hidden="true">
             {id === 'amazon' ? (
               <AmazonLogo />
-            ) : logoSrc ? (
-              <img src={logoSrc} alt="" />
             ) : (
-              <Store size={20} strokeWidth={1.6} />
+              <img src={logoSrc} alt="" width={36} height={36} decoding="async" />
             )}
           </span>
           <span className="mp-btn__divider" aria-hidden="true" />
