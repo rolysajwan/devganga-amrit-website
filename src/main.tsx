@@ -1,11 +1,15 @@
 import './glass-reflection.css';
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import GlassSphereScene from './GlassSphereScene'
 import PrivacyPolicy from './PrivacyPolicy'
 import TermsAndConditions from './TermsAndConditions'
 import './design.css'
+
+const SacredDropScene = lazy(
+  () => import('./components/SacredDrop/SacredDropScene'),
+)
 
 function Root() {
   const page = new URLSearchParams(window.location.search).get('page')
@@ -22,6 +26,11 @@ function Root() {
           <App />
         )}
       </div>
+      {page !== 'privacy-policy' && page !== 'terms' && (
+        <Suspense fallback={null}>
+          <SacredDropScene />
+        </Suspense>
+      )}
     </>
   )
 }
