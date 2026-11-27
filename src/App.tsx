@@ -44,10 +44,6 @@ const sectionIds = navItems
   .filter((item) => item.id)
   .map((item) => item.id)
 
-const sectionIds = navItems
-  .filter((item) => item.id)
-  .map((item) => item.id)
-
 const whatsappLink =
   'https://wa.me/919643345474?text=Hello%2C%20DEVGANGA%20AMRIT%20Team!%20I%20would%20like%20to%20know%20more%20about%20your%20Ganga%20Jal%20product.'
 
