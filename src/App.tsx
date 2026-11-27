@@ -31,15 +31,18 @@ useScrollEffects,
 } from './effects'
 
 const base = import.meta.env.BASE_URL
+
 const navItems = [
-{ label: 'Home', href: '#home', id: 'home' },
-{ label: 'Our Story', href: '#story', id: 'story' },
-{ label: 'Devprayag', href: '#devprayag', id: 'devprayag' },
-{ label: 'The Product', href: '#product', id: 'product' },
-const navItems = [
+  { label: 'Home', href: '#home', id: 'home' },
+  { label: 'Our Story', href: '#story', id: 'story' },
+  { label: 'Devprayag', href: '#devprayag', id: 'devprayag' },
   { label: 'The Product', href: '#product', id: 'product' },
   { label: 'Founder', href: `${base}founder/`, id: '' },
 ]
+
+const sectionIds = navItems
+  .filter((item) => item.id)
+  .map((item) => item.id)
 
 const sectionIds = navItems
   .filter((item) => item.id)
