@@ -28,6 +28,7 @@ import {
   useReveal,
   useScrollEffects,
 } from './effects'
+import DevprayagDepthScene from './DevprayagDepthScene'
 
 const base = import.meta.env.BASE_URL
 const navItems = [
@@ -521,21 +522,16 @@ function App() {
         <section className="origin section" id="devprayag">
           <div className="wrap origin-grid">
             <div className="origin-figure" data-reveal>
-              <div className="origin-frame" data-parallax>
-                <img
-                  className="origin-img"
-                  src={img.aerial}
-                  width={864}
-                  height={1536}
-                  alt="Aerial view of Devprayag, where the Bhagirathi and Alaknanda rivers meet to form the Ganga"
-                  loading="lazy"
-                  decoding="async"
-                />
+              <DevprayagDepthScene
+                aerialSrc={img.aerial}
+                aerialAlt="Aerial view of Devprayag, where the Bhagirathi and Alaknanda rivers meet to form the Ganga"
+                productSrc={img.product768}
+              >
                 <div className="glass origin-chip">
                   <small>The confluence</small>
                   <strong>Bhagirathi &amp; Alaknanda</strong>
                 </div>
-              </div>
+              </DevprayagDepthScene>
             </div>
 
             <div className="origin-copy" data-reveal style={delay(120)}>
